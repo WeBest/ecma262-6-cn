@@ -1,0 +1,1772 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <title>ECMAScript 2015 Language Specification &ndash; ECMA-262 6th Edition</title>
+  <link href="../res/es6.css" rel="stylesheet">
+  <link rel="icon"  type="image/gif" href="../res/favicon.ico">
+  <!--ipt type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-32577963-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </scri-->
+</head>
+<body>
+<img alt="Ecma International Logo." height="146" src="../res/Ecma_RVB-003.jpg" width="373">
+<hgroup>
+  <h1 style="color: #ff6600">Standard ECMA-262</h1>
+  <h1 style="color: #ff6600">6<sup>th</sup> Edition / June 2015</h1>
+  <h1 style="color: #ff6600; font-size: 225%; margin-top: 20px">ECMAScript<sup>&reg;</sup> 2015 Language Specification</h1>
+</hgroup>
+
+<div id="unofficial">
+  <p>This is the HTML rendering of <i>ECMA-262 6<sup>th</sup> Edition, The ECMAScript 2015 Language Specification</i>.</p>
+
+  <p>The PDF rendering of this document is located at <a
+  href="ECMA-262.pdf">http://www.ecma-international.org/ecma-262/6.0/ECMA-262.pdf</a>.</p>
+
+  <p>The PDF version is the definitive specification. Any discrepancies between this HTML version and the PDF version are
+  unintentional.</p>
+</div>
+
+<hr>
+
+<div class="copyright">
+  <p class="ECMAaddress">Ecma International</p>
+
+  <p class="ECMAaddress">Rue du Rhone 114</p>
+
+  <p class="ECMAaddress">CH-1204 Geneva</p>
+
+  <p class="ECMAaddress">Tel: +41 22 849 6000</p>
+
+  <p class="ECMAaddress">Fax: +41 22 849 6001</p>
+
+  <p class="ECMAaddress">Web: <a href="http://www.ecma-international.org">http://www.ecma-international.org</a></p>
+
+  <p><i>COPYRIGHT NOTICE</i></p>
+
+  <p><i>&copy; 2015 Ecma International</i></p>
+
+  <p><i>This document may be copied, published and distributed to others, and certain derivative works of it may be prepared,
+  copied, published, and distributed, in whole or in part, provided that the above copyright notice and this Copyright License and
+  Disclaimer are included on all such copies and derivative works. The only derivative works that are permissible under this
+  Copyright License and Disclaimer are:</i></p>
+
+  <p><i>(i)&#x9;works which incorporate all or portion of this document for the purpose of providing commentary or explanation
+  (such as an annotated version of the document),</i></p>
+
+  <p><i>(ii)&#x9;works which incorporate all or portion of this document for the purpose of incorporating features that provide
+  accessibility,</i></p>
+
+  <p><i>(iii)&#x9;translations of this document into languages other than English and into different formats and</i></p>
+
+  <p><i>(iv)&#x9;works by making use of this specification in standard conformant products by implementing (e.g. by copy and paste
+  wholly or partly) the functionality therein.</i></p>
+
+  <p><i>However, the content of this document itself may not be modified in any way, including by removing the copyright notice or
+  references to Ecma International, except as required to translate it into languages other than English or into a different
+  format.</i></p>
+
+  <p><i>The official version of an Ecma International document is the English language version on the Ecma International website.
+  In the event of discrepancies between a translated version and the official version, the official version shall govern.</i></p>
+
+  <p><i>The limited permissions granted above are perpetual and will not be revoked by Ecma International or its successors or
+  assigns.</i></p>
+
+  <p><i>This document and the information contained herein is provided on an "AS IS" basis and ECMA INTERNATIONAL DISCLAIMS ALL
+  WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTY THAT THE USE OF THE INFORMATION HEREIN WILL NOT
+  INFRINGE ANY OWNERSHIP RIGHTS OR ANY IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE."</i></p>
+
+  <p><b>Software License</b></p>
+
+  <p>All Software contained in this document ("Software)" is protected by copyright and is being made available under the "BSD
+  License", included below. This Software may be subject to third party rights (rights from parties other than Ecma
+  International), including patent rights, and no licenses under such third party rights are granted under this license even if
+  the third party concerned is a member of Ecma International. SEE THE ECMA CODE OF CONDUCT IN PATENT MATTERS AVAILABLE AT <a
+  href="http://www.ecma-international.org/memento/codeofconduct.htm">http://www.ecma-international.org/memento/codeofconduct.htm</a>
+  FOR INFORMATION REGARDING THE LICENSING OF PATENT CLAIMS THAT ARE REQUIRED TO IMPLEMENT ECMA INTERNATIONAL STANDARDS*.</p>
+
+  <p>Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following
+  conditions are met:</p>
+
+  <p>1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following
+  disclaimer.</p>
+
+  <p>2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following
+  disclaimer in the documentation and/or other materials provided with the distribution.</p>
+
+  <p>3. Neither the name of the authors nor Ecma International may be used to endorse or promote products derived from this
+  software without specific prior written permission.</p>
+
+  <p class="copyrightlast">THIS SOFTWARE IS PROVIDED BY THE ECMA INTERNATIONAL "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN
+  NO EVENT SHALL ECMA INTERNATIONAL BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+  (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+  INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
+  DAMAGE.</p>
+</div>
+
+<section id="contents">
+  <h1>Contents</h1>
+  <ol class="toc">
+    <li>Introduction</li>
+    <li><span class="secnum"><a href="#sec-scope">1</a></span> Scope</li>
+    <li><span class="secnum"><a href="#sec-conformance">2</a></span> Conformance</li>
+    <li><span class="secnum"><a href="#sec-normative-references">3</a></span> Normative references</li>
+    <li><span class="secnum"><a href="#sec-overview">4</a></span> Overview
+      <ol class="toc">
+        <li><span class="secnum"><a href="#sec-web-scripting">4.1</a></span> Web Scripting</li>
+        <li><span class="secnum"><a href="#sec-ecmascript-overview">4.2</a></span> ECMAScript Overview
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-objects">4.2.1</a></span> Objects</li>
+            <li><span class="secnum"><a href="#sec-strict-variant-of-ecmascript">4.2.2</a></span> The Strict Variant of
+                ECMAScript</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-terms-and-definitions">4.3</a></span> Terms and definitions
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-type">4.3.1</a></span> type</li>
+            <li><span class="secnum"><a href="#sec-primitive-value">4.3.2</a></span> primitive value</li>
+            <li><span class="secnum"><a href="#sec-terms-and-definitions-object">4.3.3</a></span> object</li>
+            <li><span class="secnum"><a href="#sec-constructor">4.3.4</a></span> constructor</li>
+            <li><span class="secnum"><a href="#sec-terms-and-definitions-prototype">4.3.5</a></span> prototype</li>
+            <li><span class="secnum"><a href="#sec-ordinary-object">4.3.6</a></span> ordinary object</li>
+            <li><span class="secnum"><a href="#sec-exotic-object">4.3.7</a></span> exotic object</li>
+            <li><span class="secnum"><a href="#sec-standard-object">4.3.8</a></span> standard object</li>
+            <li><span class="secnum"><a href="#sec-built-in-object">4.3.9</a></span> built-in object</li>
+            <li><span class="secnum"><a href="#sec-undefined-value">4.3.10</a></span> undefined value</li>
+            <li><span class="secnum"><a href="#sec-terms-and-definitions-undefined-type">4.3.11</a></span> Undefined type</li>
+            <li><span class="secnum"><a href="#sec-null-value">4.3.12</a></span> null value</li>
+            <li><span class="secnum"><a href="#sec-terms-and-definitions-null-type">4.3.13</a></span> Null type</li>
+            <li><span class="secnum"><a href="#sec-terms-and-definitions-boolean-value">4.3.14</a></span> Boolean value</li>
+            <li><span class="secnum"><a href="#sec-terms-and-definitions-boolean-type">4.3.15</a></span> Boolean type</li>
+            <li><span class="secnum"><a href="#sec-boolean-object">4.3.16</a></span> Boolean object</li>
+            <li><span class="secnum"><a href="#sec-terms-and-definitions-string-value">4.3.17</a></span> String value</li>
+            <li><span class="secnum"><a href="#sec-terms-and-definitions-string-type">4.3.18</a></span> String type</li>
+            <li><span class="secnum"><a href="#sec-string-object">4.3.19</a></span> String object</li>
+            <li><span class="secnum"><a href="#sec-terms-and-definitions-number-value">4.3.20</a></span> Number value</li>
+            <li><span class="secnum"><a href="#sec-terms-and-definitions-number-type">4.3.21</a></span> Number type</li>
+            <li><span class="secnum"><a href="#sec-number-object">4.3.22</a></span> Number object</li>
+            <li><span class="secnum"><a href="#sec-terms-and-definitions-infinity">4.3.23</a></span> Infinity</li>
+            <li><span class="secnum"><a href="#sec-terms-and-definitions-nan">4.3.24</a></span> NaN</li>
+            <li><span class="secnum"><a href="#sec-symbol-value">4.3.25</a></span> Symbol value</li>
+            <li><span class="secnum"><a href="#sec-terms-and-definitions-symbol-type">4.3.26</a></span> Symbol type</li>
+            <li><span class="secnum"><a href="#sec-symbol-object">4.3.27</a></span> Symbol object</li>
+            <li><span class="secnum"><a href="#sec-terms-and-definitions-function">4.3.28</a></span> function</li>
+            <li><span class="secnum"><a href="#sec-built-in-function">4.3.29</a></span> built-in function</li>
+            <li><span class="secnum"><a href="#sec-property">4.3.30</a></span> property</li>
+            <li><span class="secnum"><a href="#sec-method">4.3.31</a></span> method</li>
+            <li><span class="secnum"><a href="#sec-built-in-method">4.3.32</a></span> built-in method</li>
+            <li><span class="secnum"><a href="#sec-attribute">4.3.33</a></span> attribute</li>
+            <li><span class="secnum"><a href="#sec-own-property">4.3.34</a></span> own property</li>
+            <li><span class="secnum"><a href="#sec-inherited-property">4.3.35</a></span> inherited property</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-organization-of-this-specification">4.4</a></span> Organization of This
+            Specification</li>
+      </ol>
+    </li>
+    <li><span class="secnum"><a href="#sec-notational-conventions">5</a></span> Notational Conventions
+      <ol class="toc">
+        <li><span class="secnum"><a href="#sec-syntactic-and-lexical-grammars">5.1</a></span> Syntactic and Lexical Grammars
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-context-free-grammars">5.1.1</a></span> Context-Free Grammars</li>
+            <li><span class="secnum"><a href="#sec-lexical-and-regexp-grammars">5.1.2</a></span> The Lexical and RegExp
+                Grammars</li>
+            <li><span class="secnum"><a href="#sec-numeric-string-grammar">5.1.3</a></span> The Numeric String Grammar</li>
+            <li><span class="secnum"><a href="#sec-syntactic-grammar">5.1.4</a></span> The Syntactic Grammar</li>
+            <li><span class="secnum"><a href="#sec-grammar-notation">5.1.5</a></span> Grammar Notation</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-algorithm-conventions">5.2</a></span> Algorithm Conventions</li>
+        <li><span class="secnum"><a href="#sec-static-semantic-rules">5.3</a></span> Static Semantic Rules</li>
+      </ol>
+    </li>
+    <li><span class="secnum"><a href="#sec-ecmascript-data-types-and-values">6</a></span> ECMAScript Data Types and Values
+      <ol class="toc">
+        <li><span class="secnum"><a href="#sec-ecmascript-language-types">6.1</a></span> ECMAScript Language Types
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-ecmascript-language-types-undefined-type">6.1.1</a></span> The Undefined
+                Type</li>
+            <li><span class="secnum"><a href="#sec-ecmascript-language-types-null-type">6.1.2</a></span> The Null Type</li>
+            <li><span class="secnum"><a href="#sec-ecmascript-language-types-boolean-type">6.1.3</a></span> The Boolean Type</li>
+            <li><span class="secnum"><a href="#sec-ecmascript-language-types-string-type">6.1.4</a></span> The String Type</li>
+            <li><span class="secnum"><a href="#sec-ecmascript-language-types-symbol-type">6.1.5</a></span> The Symbol Type</li>
+            <li><span class="secnum"><a href="#sec-ecmascript-language-types-number-type">6.1.6</a></span> The Number Type</li>
+            <li><span class="secnum"><a href="#sec-object-type">6.1.7</a></span> The Object Type</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-ecmascript-specification-types">6.2</a></span> ECMAScript Specification Types
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-list-and-record-specification-type">6.2.1</a></span> The List and Record
+                Specification Type</li>
+            <li><span class="secnum"><a href="#sec-completion-record-specification-type">6.2.2</a></span> The Completion Record
+                Specification Type</li>
+            <li><span class="secnum"><a href="#sec-reference-specification-type">6.2.3</a></span> The Reference Specification
+                Type</li>
+            <li><span class="secnum"><a href="#sec-property-descriptor-specification-type">6.2.4</a></span> The Property
+                Descriptor Specification Type</li>
+            <li><span class="secnum"><a
+                href="#sec-lexical-environment-and-environment-record-specification-types">6.2.5</a></span> The Lexical
+                Environment and Environment Record Specification Types</li>
+            <li><span class="secnum"><a href="#sec-data-blocks">6.2.6</a></span> Data Blocks</li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><span class="secnum"><a href="#sec-abstract-operations">7</a></span> Abstract Operations
+      <ol class="toc">
+        <li><span class="secnum"><a href="#sec-type-conversion">7.1</a></span> Type Conversion
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-toprimitive">7.1.1</a></span> ToPrimitive ( input [, PreferredType] )</li>
+            <li><span class="secnum"><a href="#sec-toboolean">7.1.2</a></span> ToBoolean ( argument )</li>
+            <li><span class="secnum"><a href="#sec-tonumber">7.1.3</a></span> ToNumber ( argument )</li>
+            <li><span class="secnum"><a href="#sec-tointeger">7.1.4</a></span> ToInteger ( argument )</li>
+            <li><span class="secnum"><a href="#sec-toint32">7.1.5</a></span> ToInt32 ( argument )</li>
+            <li><span class="secnum"><a href="#sec-touint32">7.1.6</a></span> ToUint32 ( argument )</li>
+            <li><span class="secnum"><a href="#sec-toint16">7.1.7</a></span> ToInt16 ( argument )</li>
+            <li><span class="secnum"><a href="#sec-touint16">7.1.8</a></span> ToUint16 ( argument )</li>
+            <li><span class="secnum"><a href="#sec-toint8">7.1.9</a></span> ToInt8 ( argument )</li>
+            <li><span class="secnum"><a href="#sec-touint8">7.1.10</a></span> ToUint8 ( argument )</li>
+            <li><span class="secnum"><a href="#sec-touint8clamp">7.1.11</a></span> ToUint8Clamp ( argument )</li>
+            <li><span class="secnum"><a href="#sec-tostring">7.1.12</a></span> ToString ( argument )</li>
+            <li><span class="secnum"><a href="#sec-toobject">7.1.13</a></span> ToObject ( argument )</li>
+            <li><span class="secnum"><a href="#sec-topropertykey">7.1.14</a></span> ToPropertyKey ( argument )</li>
+            <li><span class="secnum"><a href="#sec-tolength">7.1.15</a></span> ToLength ( argument )</li>
+            <li><span class="secnum"><a href="#sec-canonicalnumericindexstring">7.1.16</a></span> CanonicalNumericIndexString (
+                argument )</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-testing-and-comparison-operations">7.2</a></span> Testing and Comparison Operations
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-requireobjectcoercible">7.2.1</a></span> RequireObjectCoercible ( argument
+                )</li>
+            <li><span class="secnum"><a href="#sec-isarray">7.2.2</a></span> IsArray ( argument )</li>
+            <li><span class="secnum"><a href="#sec-iscallable">7.2.3</a></span> IsCallable ( argument )</li>
+            <li><span class="secnum"><a href="#sec-isconstructor">7.2.4</a></span> IsConstructor ( argument )</li>
+            <li><span class="secnum"><a href="#sec-isextensible-o">7.2.5</a></span> IsExtensible (O)</li>
+            <li><span class="secnum"><a href="#sec-isinteger">7.2.6</a></span> IsInteger ( argument )</li>
+            <li><span class="secnum"><a href="#sec-ispropertykey">7.2.7</a></span> IsPropertyKey ( argument )</li>
+            <li><span class="secnum"><a href="#sec-isregexp">7.2.8</a></span> IsRegExp ( argument )</li>
+            <li><span class="secnum"><a href="#sec-samevalue">7.2.9</a></span> SameValue(x, y)</li>
+            <li><span class="secnum"><a href="#sec-samevaluezero">7.2.10</a></span> SameValueZero(x, y)</li>
+            <li><span class="secnum"><a href="#sec-abstract-relational-comparison">7.2.11</a></span> Abstract Relational
+                Comparison</li>
+            <li><span class="secnum"><a href="#sec-abstract-equality-comparison">7.2.12</a></span> Abstract Equality
+                Comparison</li>
+            <li><span class="secnum"><a href="#sec-strict-equality-comparison">7.2.13</a></span> Strict Equality Comparison</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-operations-on-objects">7.3</a></span> Operations on Objects
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-get-o-p">7.3.1</a></span> Get (O, P)</li>
+            <li><span class="secnum"><a href="#sec-getv">7.3.2</a></span> GetV (V, P)</li>
+            <li><span class="secnum"><a href="#sec-set-o-p-v-throw">7.3.3</a></span> Set (O, P, V, Throw)</li>
+            <li><span class="secnum"><a href="#sec-createdataproperty">7.3.4</a></span> CreateDataProperty (O, P, V)</li>
+            <li><span class="secnum"><a href="#sec-createmethodproperty">7.3.5</a></span> CreateMethodProperty (O, P, V)</li>
+            <li><span class="secnum"><a href="#sec-createdatapropertyorthrow">7.3.6</a></span> CreateDataPropertyOrThrow (O, P,
+                V)</li>
+            <li><span class="secnum"><a href="#sec-definepropertyorthrow">7.3.7</a></span> DefinePropertyOrThrow (O, P, desc)</li>
+            <li><span class="secnum"><a href="#sec-deletepropertyorthrow">7.3.8</a></span> DeletePropertyOrThrow (O, P)</li>
+            <li><span class="secnum"><a href="#sec-getmethod">7.3.9</a></span> GetMethod (O, P)</li>
+            <li><span class="secnum"><a href="#sec-hasproperty">7.3.10</a></span> HasProperty (O, P)</li>
+            <li><span class="secnum"><a href="#sec-hasownproperty">7.3.11</a></span> HasOwnProperty (O, P)</li>
+            <li><span class="secnum"><a href="#sec-call">7.3.12</a></span> Call(F, V, [argumentsList])</li>
+            <li><span class="secnum"><a href="#sec-construct">7.3.13</a></span> Construct (F, [argumentsList], [newTarget])</li>
+            <li><span class="secnum"><a href="#sec-setintegritylevel">7.3.14</a></span> SetIntegrityLevel (O, level)</li>
+            <li><span class="secnum"><a href="#sec-testintegritylevel">7.3.15</a></span> TestIntegrityLevel (O, level)</li>
+            <li><span class="secnum"><a href="#sec-createarrayfromlist">7.3.16</a></span> CreateArrayFromList (elements)</li>
+            <li><span class="secnum"><a href="#sec-createlistfromarraylike">7.3.17</a></span> CreateListFromArrayLike (obj [,
+                elementTypes] )</li>
+            <li><span class="secnum"><a href="#sec-invoke">7.3.18</a></span> Invoke(O,P, [argumentsList])</li>
+            <li><span class="secnum"><a href="#sec-ordinaryhasinstance">7.3.19</a></span> OrdinaryHasInstance (C, O)</li>
+            <li><span class="secnum"><a href="#sec-speciesconstructor">7.3.20</a></span> SpeciesConstructor ( O,
+                defaultConstructor )</li>
+            <li><span class="secnum"><a href="#sec-enumerableownnames">7.3.21</a></span> EnumerableOwnNames (O)</li>
+            <li><span class="secnum"><a href="#sec-getfunctionrealm">7.3.22</a></span> GetFunctionRealm ( obj )</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-operations-on-iterator-objects">7.4</a></span> Operations on Iterator Objects
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-getiterator">7.4.1</a></span> GetIterator ( obj, method )</li>
+            <li><span class="secnum"><a href="#sec-iteratornext">7.4.2</a></span> IteratorNext ( iterator, value )</li>
+            <li><span class="secnum"><a href="#sec-iteratorcomplete">7.4.3</a></span> IteratorComplete ( iterResult )</li>
+            <li><span class="secnum"><a href="#sec-iteratorvalue">7.4.4</a></span> IteratorValue ( iterResult )</li>
+            <li><span class="secnum"><a href="#sec-iteratorstep">7.4.5</a></span> IteratorStep ( iterator )</li>
+            <li><span class="secnum"><a href="#sec-iteratorclose">7.4.6</a></span> IteratorClose( iterator, completion )</li>
+            <li><span class="secnum"><a href="#sec-createiterresultobject">7.4.7</a></span> CreateIterResultObject ( value, done
+                )</li>
+            <li><span class="secnum"><a href="#sec-createlistiterator">7.4.8</a></span> CreateListIterator ( list )</li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><span class="secnum"><a href="#sec-executable-code-and-execution-contexts">8</a></span> Executable Code and Execution
+        Contexts
+      <ol class="toc">
+        <li><span class="secnum"><a href="#sec-lexical-environments">8.1</a></span> Lexical Environments
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-environment-records">8.1.1</a></span> Environment Records</li>
+            <li><span class="secnum"><a href="#sec-lexical-environment-operations">8.1.2</a></span> Lexical Environment
+                Operations</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-code-realms">8.2</a></span> Code Realms
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-createrealm">8.2.1</a></span> CreateRealm ( )</li>
+            <li><span class="secnum"><a href="#sec-createintrinsics">8.2.2</a></span> CreateIntrinsics ( realmRec )</li>
+            <li><span class="secnum"><a href="#sec-setrealmglobalobject">8.2.3</a></span> SetRealmGlobalObject ( realmRec,
+                globalObj )</li>
+            <li><span class="secnum"><a href="#sec-setdefaultglobalbindings">8.2.4</a></span> SetDefaultGlobalBindings ( realmRec
+                )</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-execution-contexts">8.3</a></span> Execution Contexts
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-resolvebinding">8.3.1</a></span> ResolveBinding ( name, [env] )</li>
+            <li><span class="secnum"><a href="#sec-getthisenvironment">8.3.2</a></span> GetThisEnvironment ( )</li>
+            <li><span class="secnum"><a href="#sec-resolvethisbinding">8.3.3</a></span> ResolveThisBinding ( )</li>
+            <li><span class="secnum"><a href="#sec-getnewtarget">8.3.4</a></span> GetNewTarget ( )</li>
+            <li><span class="secnum"><a href="#sec-getglobalobject">8.3.5</a></span> GetGlobalObject ( )</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-jobs-and-job-queues">8.4</a></span> Jobs and Job Queues
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-enqueuejob">8.4.1</a></span> EnqueueJob (queueName, job, arguments)</li>
+            <li><span class="secnum"><a href="#sec-nextjob-result">8.4.2</a></span> NextJob result</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-ecmascript-initialization">8.5</a></span> ECMAScript Initialization()
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-initializehostdefinedrealm">8.5.1</a></span> InitializeHostDefinedRealm ( realm
+                )</li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><span class="secnum"><a href="#sec-ordinary-and-exotic-objects-behaviours">9</a></span> Ordinary and Exotic Objects
+        Behaviours
+      <ol class="toc">
+        <li><span class="secnum"><a href="#sec-ordinary-object-internal-methods-and-internal-slots">9.1</a></span> Ordinary Object
+            Internal Methods and Internal Slots
+          <ol class="toc">
+            <li><span class="secnum"><a
+                href="#sec-ordinary-object-internal-methods-and-internal-slots-getprototypeof">9.1.1</a></span> [[GetPrototypeOf]]
+                ( )</li>
+            <li><span class="secnum"><a
+                href="#sec-ordinary-object-internal-methods-and-internal-slots-setprototypeof-v">9.1.2</a></span>
+                [[SetPrototypeOf]] (V)</li>
+            <li><span class="secnum"><a
+                href="#sec-ordinary-object-internal-methods-and-internal-slots-isextensible">9.1.3</a></span> [[IsExtensible]] (
+                )</li>
+            <li><span class="secnum"><a
+                href="#sec-ordinary-object-internal-methods-and-internal-slots-preventextensions">9.1.4</a></span>
+                [[PreventExtensions]] ( )</li>
+            <li><span class="secnum"><a
+                href="#sec-ordinary-object-internal-methods-and-internal-slots-getownproperty-p">9.1.5</a></span>
+                [[GetOwnProperty]] (P)</li>
+            <li><span class="secnum"><a
+                href="#sec-ordinary-object-internal-methods-and-internal-slots-defineownproperty-p-desc">9.1.6</a></span>
+                [[DefineOwnProperty]] (P, Desc)</li>
+            <li><span class="secnum"><a
+                href="#sec-ordinary-object-internal-methods-and-internal-slots-hasproperty-p">9.1.7</a></span>
+                [[HasProperty]](P)</li>
+            <li><span class="secnum"><a
+                href="#sec-ordinary-object-internal-methods-and-internal-slots-get-p-receiver">9.1.8</a></span> [[Get]] (P,
+                Receiver)</li>
+            <li><span class="secnum"><a
+                href="#sec-ordinary-object-internal-methods-and-internal-slots-set-p-v-receiver">9.1.9</a></span> [[Set]] ( P, V,
+                Receiver)</li>
+            <li><span class="secnum"><a href="#sec-ordinary-object-internal-methods-and-internal-slots-delete-p">9.1.10</a></span>
+                [[Delete]] (P)</li>
+            <li><span class="secnum"><a
+                href="#sec-ordinary-object-internal-methods-and-internal-slots-enumerate">9.1.11</a></span> [[Enumerate]] ()</li>
+            <li><span class="secnum"><a
+                href="#sec-ordinary-object-internal-methods-and-internal-slots-ownpropertykeys">9.1.12</a></span>
+                [[OwnPropertyKeys]] ( )</li>
+            <li><span class="secnum"><a href="#sec-objectcreate">9.1.13</a></span> ObjectCreate(proto, internalSlotsList)</li>
+            <li><span class="secnum"><a href="#sec-ordinarycreatefromconstructor">9.1.14</a></span> OrdinaryCreateFromConstructor
+                ( constructor,  intrinsicDefaultProto, internalSlotsList )</li>
+            <li><span class="secnum"><a href="#sec-getprototypefromconstructor">9.1.15</a></span> GetPrototypeFromConstructor (
+                constructor, intrinsicDefaultProto )</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-ecmascript-function-objects">9.2</a></span> ECMAScript Function Objects
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-ecmascript-function-objects-call-thisargument-argumentslist">9.2.1</a></span>
+                [[Call]] ( thisArgument, argumentsList)</li>
+            <li><span class="secnum"><a href="#sec-ecmascript-function-objects-construct-argumentslist-newtarget">9.2.2</a></span>
+                [[Construct]] ( argumentsList, newTarget)</li>
+            <li><span class="secnum"><a href="#sec-functionallocate">9.2.3</a></span> FunctionAllocate (functionPrototype, strict
+                [,functionKind] )</li>
+            <li><span class="secnum"><a href="#sec-functioninitialize">9.2.4</a></span> FunctionInitialize (F, kind,
+                ParameterList, Body, Scope)</li>
+            <li><span class="secnum"><a href="#sec-functioncreate">9.2.5</a></span> FunctionCreate (kind, ParameterList, Body,
+                Scope, Strict, prototype)</li>
+            <li><span class="secnum"><a href="#sec-generatorfunctioncreate">9.2.6</a></span> GeneratorFunctionCreate (kind,
+                ParameterList, Body, Scope, Strict)</li>
+            <li><span class="secnum"><a href="#sec-addrestrictedfunctionproperties">9.2.7</a></span>
+                AddRestrictedFunctionProperties ( F, realm )</li>
+            <li><span class="secnum"><a href="#sec-makeconstructor">9.2.8</a></span> MakeConstructor (F, writablePrototype,
+                prototype)</li>
+            <li><span class="secnum"><a href="#sec-makeclassconstructor">9.2.9</a></span> MakeClassConstructor ( F)</li>
+            <li><span class="secnum"><a href="#sec-makemethod">9.2.10</a></span> MakeMethod ( F, homeObject)</li>
+            <li><span class="secnum"><a href="#sec-setfunctionname">9.2.11</a></span> SetFunctionName (F, name, prefix)</li>
+            <li><span class="secnum"><a href="#sec-functiondeclarationinstantiation">9.2.12</a></span>
+                FunctionDeclarationInstantiation(func, argumentsList)</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-built-in-function-objects">9.3</a></span> Built-in Function Objects
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-built-in-function-objects-call-thisargument-argumentslist">9.3.1</a></span>
+                [[Call]] ( thisArgument, argumentsList)</li>
+            <li><span class="secnum"><a href="#sec-built-in-function-objects-construct-argumentslist-newtarget">9.3.2</a></span>
+                [[Construct]] (argumentsList, newTarget)</li>
+            <li><span class="secnum"><a href="#sec-createbuiltinfunction">9.3.3</a></span> CreateBuiltinFunction(realm, steps,
+                prototype, internalSlotsList)</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-built-in-exotic-object-internal-methods-and-slots">9.4</a></span> Built-in Exotic
+            Object Internal Methods and Slots
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-bound-function-exotic-objects">9.4.1</a></span> Bound Function Exotic
+                Objects</li>
+            <li><span class="secnum"><a href="#sec-array-exotic-objects">9.4.2</a></span> Array Exotic Objects</li>
+            <li><span class="secnum"><a href="#sec-string-exotic-objects">9.4.3</a></span> String Exotic Objects</li>
+            <li><span class="secnum"><a href="#sec-arguments-exotic-objects">9.4.4</a></span> Arguments Exotic Objects</li>
+            <li><span class="secnum"><a href="#sec-integer-indexed-exotic-objects">9.4.5</a></span> Integer Indexed Exotic
+                Objects</li>
+            <li><span class="secnum"><a href="#sec-module-namespace-exotic-objects">9.4.6</a></span> Module Namespace Exotic
+                Objects</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-proxy-object-internal-methods-and-internal-slots">9.5</a></span> Proxy Object
+            Internal Methods and Internal Slots
+          <ol class="toc">
+            <li><span class="secnum"><a
+                href="#sec-proxy-object-internal-methods-and-internal-slots-getprototypeof">9.5.1</a></span> [[GetPrototypeOf]] (
+                )</li>
+            <li><span class="secnum"><a
+                href="#sec-proxy-object-internal-methods-and-internal-slots-setprototypeof-v">9.5.2</a></span> [[SetPrototypeOf]]
+                (V)</li>
+            <li><span class="secnum"><a href="#sec-proxy-object-internal-methods-and-internal-slots-isextensible">9.5.3</a></span>
+                [[IsExtensible]] ( )</li>
+            <li><span class="secnum"><a
+                href="#sec-proxy-object-internal-methods-and-internal-slots-preventextensions">9.5.4</a></span>
+                [[PreventExtensions]] ( )</li>
+            <li><span class="secnum"><a
+                href="#sec-proxy-object-internal-methods-and-internal-slots-getownproperty-p">9.5.5</a></span> [[GetOwnProperty]]
+                (P)</li>
+            <li><span class="secnum"><a
+                href="#sec-proxy-object-internal-methods-and-internal-slots-defineownproperty-p-desc">9.5.6</a></span>
+                [[DefineOwnProperty]] (P, Desc)</li>
+            <li><span class="secnum"><a
+                href="#sec-proxy-object-internal-methods-and-internal-slots-hasproperty-p">9.5.7</a></span> [[HasProperty]]
+                (P)</li>
+            <li><span class="secnum"><a
+                href="#sec-proxy-object-internal-methods-and-internal-slots-get-p-receiver">9.5.8</a></span> [[Get]] (P,
+                Receiver)</li>
+            <li><span class="secnum"><a
+                href="#sec-proxy-object-internal-methods-and-internal-slots-set-p-v-receiver">9.5.9</a></span> [[Set]] ( P, V,
+                Receiver)</li>
+            <li><span class="secnum"><a href="#sec-proxy-object-internal-methods-and-internal-slots-delete-p">9.5.10</a></span>
+                [[Delete]] (P)</li>
+            <li><span class="secnum"><a href="#sec-proxy-object-internal-methods-and-internal-slots-enumerate">9.5.11</a></span>
+                [[Enumerate]] ()</li>
+            <li><span class="secnum"><a
+                href="#sec-proxy-object-internal-methods-and-internal-slots-ownpropertykeys">9.5.12</a></span> [[OwnPropertyKeys]]
+                ( )</li>
+            <li><span class="secnum"><a
+                href="#sec-proxy-object-internal-methods-and-internal-slots-call-thisargument-argumentslist">9.5.13</a></span>
+                [[Call]] (thisArgument, argumentsList)</li>
+            <li><span class="secnum"><a
+                href="#sec-proxy-object-internal-methods-and-internal-slots-construct-argumentslist-newtarget">9.5.14</a></span>
+                [[Construct]] ( argumentsList, newTarget)</li>
+            <li><span class="secnum"><a href="#sec-proxycreate">9.5.15</a></span> ProxyCreate(target, handler)</li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><span class="secnum"><a href="#sec-ecmascript-language-source-code">10</a></span> ECMAScript Language: Source Code
+      <ol class="toc">
+        <li><span class="secnum"><a href="#sec-source-text">10.1</a></span> Source Text
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-utf16encoding">10.1.1</a></span> Static Semantics:  <var>UTF16Encoding ( cp
+                )</var></li>
+            <li><span class="secnum"><a href="#sec-utf16decode">10.1.2</a></span> Static Semantics: UTF16Decode( lead, trail
+                )</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-types-of-source-code">10.2</a></span> Types of Source Code
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-strict-mode-code">10.2.1</a></span> Strict Mode Code</li>
+            <li><span class="secnum"><a href="#sec-non-ecmascript-functions">10.2.2</a></span> Non-ECMAScript Functions</li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><span class="secnum"><a href="#sec-ecmascript-language-lexical-grammar">11</a></span> ECMAScript Language: Lexical Grammar
+      <ol class="toc">
+        <li><span class="secnum"><a href="#sec-unicode-format-control-characters">11.1</a></span> Unicode Format-Control
+            Characters</li>
+        <li><span class="secnum"><a href="#sec-white-space">11.2</a></span> White Space</li>
+        <li><span class="secnum"><a href="#sec-line-terminators">11.3</a></span> Line Terminators</li>
+        <li><span class="secnum"><a href="#sec-comments">11.4</a></span> Comments</li>
+        <li><span class="secnum"><a href="#sec-tokens">11.5</a></span> Tokens</li>
+        <li><span class="secnum"><a href="#sec-names-and-keywords">11.6</a></span> Names and Keywords
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-identifier-names">11.6.1</a></span> Identifier Names</li>
+            <li><span class="secnum"><a href="#sec-reserved-words">11.6.2</a></span> Reserved Words</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-punctuators">11.7</a></span> Punctuators</li>
+        <li><span class="secnum"><a href="#sec-ecmascript-language-lexical-grammar-literals">11.8</a></span> Literals
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-null-literals">11.8.1</a></span> Null Literals</li>
+            <li><span class="secnum"><a href="#sec-boolean-literals">11.8.2</a></span> Boolean Literals</li>
+            <li><span class="secnum"><a href="#sec-literals-numeric-literals">11.8.3</a></span> Numeric Literals</li>
+            <li><span class="secnum"><a href="#sec-literals-string-literals">11.8.4</a></span> String Literals</li>
+            <li><span class="secnum"><a href="#sec-literals-regular-expression-literals">11.8.5</a></span> Regular Expression
+                Literals</li>
+            <li><span class="secnum"><a href="#sec-template-literal-lexical-components">11.8.6</a></span> Template Literal Lexical
+                Components</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-automatic-semicolon-insertion">11.9</a></span> Automatic Semicolon Insertion
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-rules-of-automatic-semicolon-insertion">11.9.1</a></span> Rules of Automatic
+                Semicolon Insertion</li>
+            <li><span class="secnum"><a href="#sec-examples-of-automatic-semicolon-insertion">11.9.2</a></span> Examples of
+                Automatic Semicolon Insertion</li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><span class="secnum"><a href="#sec-ecmascript-language-expressions">12</a></span> ECMAScript Language: Expressions
+      <ol class="toc">
+        <li><span class="secnum"><a href="#sec-identifiers">12.1</a></span> Identifiers
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-identifiers-static-semantics-early-errors">12.1.1</a></span> Static Semantics:
+                Early Errors</li>
+            <li><span class="secnum"><a href="#sec-identifiers-static-semantics-boundnames">12.1.2</a></span> Static Semantics:
+                BoundNames</li>
+            <li><span class="secnum"><a href="#sec-identifiers-static-semantics-isvalidsimpleassignmenttarget">12.1.3</a></span>
+                Static Semantics:  IsValidSimpleAssignmentTarget</li>
+            <li><span class="secnum"><a href="#sec-identifiers-static-semantics-stringvalue">12.1.4</a></span> Static Semantics:
+                <span class="nt">StringValue</span></li>
+            <li><span class="secnum"><a href="#sec-identifiers-runtime-semantics-bindinginitialization">12.1.5</a></span> Runtime
+                Semantics: BindingInitialization</li>
+            <li><span class="secnum"><a href="#sec-identifiers-runtime-semantics-evaluation">12.1.6</a></span> Runtime Semantics:
+                Evaluation</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-primary-expression">12.2</a></span> Primary Expression
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-primary-expression-semantics">12.2.1</a></span> Semantics</li>
+            <li><span class="secnum"><a href="#sec-this-keyword">12.2.2</a></span> The <code>this</code> Keyword</li>
+            <li><span class="secnum"><a href="#sec-identifier-reference">12.2.3</a></span> Identifier Reference</li>
+            <li><span class="secnum"><a href="#sec-primary-expression-literals">12.2.4</a></span> Literals</li>
+            <li><span class="secnum"><a href="#sec-array-initializer">12.2.5</a></span> Array Initializer</li>
+            <li><span class="secnum"><a href="#sec-object-initializer">12.2.6</a></span> Object Initializer</li>
+            <li><span class="secnum"><a href="#sec-function-defining-expressions">12.2.7</a></span> Function Defining
+                Expressions</li>
+            <li><span class="secnum"><a href="#sec-primary-expression-regular-expression-literals">12.2.8</a></span> Regular
+                Expression Literals</li>
+            <li><span class="secnum"><a href="#sec-template-literals">12.2.9</a></span> Template Literals</li>
+            <li><span class="secnum"><a href="#sec-grouping-operator">12.2.10</a></span> The Grouping Operator</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-left-hand-side-expressions">12.3</a></span> Left-Hand-Side Expressions
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-static-semantics">12.3.1</a></span> Static Semantics</li>
+            <li><span class="secnum"><a href="#sec-property-accessors">12.3.2</a></span> Property Accessors</li>
+            <li><span class="secnum"><a href="#sec-new-operator">12.3.3</a></span> The <code>new</code> Operator</li>
+            <li><span class="secnum"><a href="#sec-function-calls">12.3.4</a></span> Function Calls</li>
+            <li><span class="secnum"><a href="#sec-super-keyword">12.3.5</a></span> The <code>super</code> Keyword</li>
+            <li><span class="secnum"><a href="#sec-argument-lists">12.3.6</a></span> Argument Lists</li>
+            <li><span class="secnum"><a href="#sec-tagged-templates">12.3.7</a></span> Tagged Templates</li>
+            <li><span class="secnum"><a href="#sec-meta-properties">12.3.8</a></span> Meta Properties</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-postfix-expressions">12.4</a></span> Postfix Expressions
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-postfix-expressions-static-semantics-early-errors">12.4.1</a></span> Static
+                Semantics:  Early Errors</li>
+            <li><span class="secnum"><a href="#sec-postfix-expressions-static-semantics-isfunctiondefinition">12.4.2</a></span>
+                Static Semantics:  IsFunctionDefinition</li>
+            <li><span class="secnum"><a
+                href="#sec-postfix-expressions-static-semantics-isvalidsimpleassignmenttarget">12.4.3</a></span> Static Semantics:
+                IsValidSimpleAssignmentTarget</li>
+            <li><span class="secnum"><a href="#sec-postfix-increment-operator">12.4.4</a></span> Postfix Increment Operator</li>
+            <li><span class="secnum"><a href="#sec-postfix-decrement-operator">12.4.5</a></span> Postfix Decrement Operator</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-unary-operators">12.5</a></span> Unary Operators
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-unary-operators-static-semantics-early-errors">12.5.1</a></span> Static
+                Semantics:  Early Errors</li>
+            <li><span class="secnum"><a href="#sec-unary-operators-static-semantics-isfunctiondefinition">12.5.2</a></span> Static
+                Semantics:  IsFunctionDefinition</li>
+            <li><span class="secnum"><a
+                href="#sec-unary-operators-static-semantics-isvalidsimpleassignmenttarget">12.5.3</a></span> Static Semantics:
+                IsValidSimpleAssignmentTarget</li>
+            <li><span class="secnum"><a href="#sec-delete-operator">12.5.4</a></span> The <code>delete</code> Operator</li>
+            <li><span class="secnum"><a href="#sec-void-operator">12.5.5</a></span> The <code>void</code> Operator</li>
+            <li><span class="secnum"><a href="#sec-typeof-operator">12.5.6</a></span> The <code>typeof</code> Operator</li>
+            <li><span class="secnum"><a href="#sec-prefix-increment-operator">12.5.7</a></span> Prefix Increment Operator</li>
+            <li><span class="secnum"><a href="#sec-prefix-decrement-operator">12.5.8</a></span> Prefix Decrement Operator</li>
+            <li><span class="secnum"><a href="#sec-unary-plus-operator">12.5.9</a></span> Unary <code>+</code> Operator</li>
+            <li><span class="secnum"><a href="#sec-unary-minus-operator">12.5.10</a></span> Unary <code>-</code> Operator</li>
+            <li><span class="secnum"><a href="#sec-bitwise-not-operator">12.5.11</a></span> Bitwise NOT Operator ( <code>~</code>
+                )</li>
+            <li><span class="secnum"><a href="#sec-logical-not-operator">12.5.12</a></span> Logical NOT Operator ( <code>!</code>
+                )</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-multiplicative-operators">12.6</a></span> Multiplicative Operators
+          <ol class="toc">
+            <li><span class="secnum"><a
+                href="#sec-multiplicative-operators-static-semantics-isfunctiondefinition">12.6.1</a></span> Static Semantics:
+                IsFunctionDefinition</li>
+            <li><span class="secnum"><a
+                href="#sec-multiplicative-operators-static-semantics-isvalidsimpleassignmenttarget">12.6.2</a></span> Static
+                Semantics:  IsValidSimpleAssignmentTarget</li>
+            <li><span class="secnum"><a href="#sec-multiplicative-operators-runtime-semantics-evaluation">12.6.3</a></span>
+                Runtime Semantics: Evaluation</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-additive-operators">12.7</a></span> Additive Operators
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-additive-operators-static-semantics-isfunctiondefinition">12.7.1</a></span>
+                Static Semantics:  IsFunctionDefinition</li>
+            <li><span class="secnum"><a
+                href="#sec-additive-operators-static-semantics-isvalidsimpleassignmenttarget">12.7.2</a></span> Static Semantics:
+                IsValidSimpleAssignmentTarget</li>
+            <li><span class="secnum"><a href="#sec-addition-operator-plus">12.7.3</a></span> The Addition operator (
+                <code>+</code> )</li>
+            <li><span class="secnum"><a href="#sec-subtraction-operator-minus">12.7.4</a></span> The Subtraction Operator (
+                <code>-</code> )</li>
+            <li><span class="secnum"><a href="#sec-applying-the-additive-operators-to-numbers">12.7.5</a></span> Applying the
+                Additive Operators to Numbers</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-bitwise-shift-operators">12.8</a></span> Bitwise Shift Operators
+          <ol class="toc">
+            <li><span class="secnum"><a
+                href="#sec-bitwise-shift-operators-static-semantics-isfunctiondefinition">12.8.1</a></span> Static Semantics:
+                IsFunctionDefinition</li>
+            <li><span class="secnum"><a
+                href="#sec-bitwise-shift-operators-static-semantics-isvalidsimpleassignmenttarget">12.8.2</a></span> Static
+                Semantics:  IsValidSimpleAssignmentTarget</li>
+            <li><span class="secnum"><a href="#sec-left-shift-operator">12.8.3</a></span> The Left Shift Operator (
+                <code>&lt;&lt;</code> )</li>
+            <li><span class="secnum"><a href="#sec-signed-right-shift-operator">12.8.4</a></span> The Signed Right Shift Operator
+                ( <code>&gt;&gt;</code> )</li>
+            <li><span class="secnum"><a href="#sec-unsigned-right-shift-operator">12.8.5</a></span> The Unsigned Right Shift
+                Operator ( <code>&gt;&gt;&gt;</code> )</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-relational-operators">12.9</a></span> Relational Operators
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-relational-operators-static-semantics-isfunctiondefinition">12.9.1</a></span>
+                Static Semantics:  IsFunctionDefinition</li>
+            <li><span class="secnum"><a
+                href="#sec-relational-operators-static-semantics-isvalidsimpleassignmenttarget">12.9.2</a></span> Static
+                Semantics:  IsValidSimpleAssignmentTarget</li>
+            <li><span class="secnum"><a href="#sec-relational-operators-runtime-semantics-evaluation">12.9.3</a></span> Runtime
+                Semantics: Evaluation</li>
+            <li><span class="secnum"><a href="#sec-instanceofoperator">12.9.4</a></span> Runtime Semantics: InstanceofOperator(O,
+                C)</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-equality-operators">12.10</a></span> Equality Operators
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-equality-operators-static-semantics-isfunctiondefinition">12.10.1</a></span>
+                Static Semantics:  IsFunctionDefinition</li>
+            <li><span class="secnum"><a
+                href="#sec-equality-operators-static-semantics-isvalidsimpleassignmenttarget">12.10.2</a></span> Static Semantics:
+                IsValidSimpleAssignmentTarget</li>
+            <li><span class="secnum"><a href="#sec-equality-operators-runtime-semantics-evaluation">12.10.3</a></span> Runtime
+                Semantics: Evaluation</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-binary-bitwise-operators">12.11</a></span> Binary Bitwise Operators
+          <ol class="toc">
+            <li><span class="secnum"><a
+                href="#sec-binary-bitwise-operators-static-semantics-isfunctiondefinition">12.11.1</a></span> Static Semantics:
+                IsFunctionDefinition</li>
+            <li><span class="secnum"><a
+                href="#sec-binary-bitwise-operators-static-semantics-isvalidsimpleassignmenttarget">12.11.2</a></span> Static
+                Semantics:  IsValidSimpleAssignmentTarget</li>
+            <li><span class="secnum"><a href="#sec-binary-bitwise-operators-runtime-semantics-evaluation">12.11.3</a></span>
+                Runtime Semantics: Evaluation</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-binary-logical-operators">12.12</a></span> Binary Logical Operators
+          <ol class="toc">
+            <li><span class="secnum"><a
+                href="#sec-binary-logical-operators-static-semantics-isfunctiondefinition">12.12.1</a></span> Static Semantics:
+                IsFunctionDefinition</li>
+            <li><span class="secnum"><a
+                href="#sec-binary-logical-operators-static-semantics-isvalidsimpleassignmenttarget">12.12.2</a></span> Static
+                Semantics:  IsValidSimpleAssignmentTarget</li>
+            <li><span class="secnum"><a href="#sec-binary-logical-operators-runtime-semantics-evaluation">12.12.3</a></span>
+                Runtime Semantics: Evaluation</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-conditional-operator">12.13</a></span> Conditional Operator ( <code>? : )</code>
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-conditional-operator-static-semantics-isfunctiondefinition">12.13.1</a></span>
+                Static Semantics:  IsFunctionDefinition</li>
+            <li><span class="secnum"><a
+                href="#sec-conditional-operator-static-semantics-isvalidsimpleassignmenttarget">12.13.2</a></span> Static
+                Semantics:  IsValidSimpleAssignmentTarget</li>
+            <li><span class="secnum"><a href="#sec-conditional-operator-runtime-semantics-evaluation">12.13.3</a></span> Runtime
+                Semantics: Evaluation</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-assignment-operators">12.14</a></span> Assignment Operators
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-assignment-operators-static-semantics-early-errors">12.14.1</a></span> Static
+                Semantics:  Early Errors</li>
+            <li><span class="secnum"><a href="#sec-assignment-operators-static-semantics-isfunctiondefinition">12.14.2</a></span>
+                Static Semantics:  IsFunctionDefinition</li>
+            <li><span class="secnum"><a
+                href="#sec-assignment-operators-static-semantics-isvalidsimpleassignmenttarget">12.14.3</a></span> Static
+                Semantics:  IsValidSimpleAssignmentTarget</li>
+            <li><span class="secnum"><a href="#sec-assignment-operators-runtime-semantics-evaluation">12.14.4</a></span> Runtime
+                Semantics: Evaluation</li>
+            <li><span class="secnum"><a href="#sec-destructuring-assignment">12.14.5</a></span> Destructuring Assignment</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-comma-operator">12.15</a></span> Comma Operator ( <code>, )</code>
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-comma-operator-static-semantics-isfunctiondefinition">12.15.1</a></span> Static
+                Semantics:  IsFunctionDefinition</li>
+            <li><span class="secnum"><a
+                href="#sec-comma-operator-static-semantics-isvalidsimpleassignmenttarget">12.15.2</a></span> Static Semantics:
+                IsValidSimpleAssignmentTarget</li>
+            <li><span class="secnum"><a href="#sec-comma-operator-runtime-semantics-evaluation">12.15.3</a></span> Runtime
+                Semantics: Evaluation</li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><span class="secnum"><a href="#sec-ecmascript-language-statements-and-declarations">13</a></span> ECMAScript Language:
+        Statements and Declarations
+      <ol class="toc">
+        <li><span class="secnum"><a href="#sec-statement-semantics">13.1</a></span> Statement Semantics
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-statement-semantics-static-semantics-containsduplicatelabels">13.1.1</a></span>
+                Static Semantics: ContainsDuplicateLabels</li>
+            <li><span class="secnum"><a
+                href="#sec-statement-semantics-static-semantics-containsundefinedbreaktarget">13.1.2</a></span> Static Semantics:
+                ContainsUndefinedBreakTarget</li>
+            <li><span class="secnum"><a
+                href="#sec-statement-semantics-static-semantics-containsundefinedcontinuetarget">13.1.3</a></span> Static
+                Semantics: ContainsUndefinedContinueTarget</li>
+            <li><span class="secnum"><a href="#sec-static-semantics-declarationpart">13.1.4</a></span> Static Semantics:
+                DeclarationPart</li>
+            <li><span class="secnum"><a href="#sec-statement-semantics-static-semantics-vardeclarednames">13.1.5</a></span> Static
+                Semantics:  VarDeclaredNames</li>
+            <li><span class="secnum"><a href="#sec-statement-semantics-static-semantics-varscopeddeclarations">13.1.6</a></span>
+                Static Semantics:  VarScopedDeclarations</li>
+            <li><span class="secnum"><a href="#sec-statement-semantics-runtime-semantics-labelledevaluation">13.1.7</a></span>
+                Runtime Semantics: LabelledEvaluation</li>
+            <li><span class="secnum"><a href="#sec-statement-semantics-runtime-semantics-evaluation">13.1.8</a></span> Runtime
+                Semantics: Evaluation</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-block">13.2</a></span> Block
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-block-static-semantics-early-errors">13.2.1</a></span> Static Semantics:  Early
+                Errors</li>
+            <li><span class="secnum"><a href="#sec-block-static-semantics-containsduplicatelabels">13.2.2</a></span> Static
+                Semantics: ContainsDuplicateLabels</li>
+            <li><span class="secnum"><a href="#sec-block-static-semantics-containsundefinedbreaktarget">13.2.3</a></span> Static
+                Semantics: ContainsUndefinedBreakTarget</li>
+            <li><span class="secnum"><a href="#sec-block-static-semantics-containsundefinedcontinuetarget">13.2.4</a></span>
+                Static Semantics: ContainsUndefinedContinueTarget</li>
+            <li><span class="secnum"><a href="#sec-block-static-semantics-lexicallydeclarednames">13.2.5</a></span> Static
+                Semantics:  LexicallyDeclaredNames</li>
+            <li><span class="secnum"><a href="#sec-block-static-semantics-lexicallyscopeddeclarations">13.2.6</a></span> Static
+                Semantics:  LexicallyScopedDeclarations</li>
+            <li><span class="secnum"><a href="#sec-block-static-semantics-toplevellexicallydeclarednames">13.2.7</a></span> Static
+                Semantics:  TopLevelLexicallyDeclaredNames</li>
+            <li><span class="secnum"><a href="#sec-block-static-semantics-toplevellexicallyscopeddeclarations">13.2.8</a></span>
+                Static Semantics:  TopLevelLexicallyScopedDeclarations</li>
+            <li><span class="secnum"><a href="#sec-block-static-semantics-toplevelvardeclarednames">13.2.9</a></span> Static
+                Semantics:  TopLevelVarDeclaredNames</li>
+            <li><span class="secnum"><a href="#sec-block-static-semantics-toplevelvarscopeddeclarations">13.2.10</a></span> Static
+                Semantics:  TopLevelVarScopedDeclarations</li>
+            <li><span class="secnum"><a href="#sec-block-static-semantics-vardeclarednames">13.2.11</a></span> Static Semantics:
+                VarDeclaredNames</li>
+            <li><span class="secnum"><a href="#sec-block-static-semantics-varscopeddeclarations">13.2.12</a></span> Static
+                Semantics:  VarScopedDeclarations</li>
+            <li><span class="secnum"><a href="#sec-block-runtime-semantics-evaluation">13.2.13</a></span> Runtime Semantics:
+                Evaluation</li>
+            <li><span class="secnum"><a href="#sec-blockdeclarationinstantiation">13.2.14</a></span> Runtime Semantics:
+                BlockDeclarationInstantiation( code, env )</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-declarations-and-the-variable-statement">13.3</a></span> Declarations and the
+            Variable Statement
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-let-and-const-declarations">13.3.1</a></span> Let and Const Declarations</li>
+            <li><span class="secnum"><a href="#sec-variable-statement">13.3.2</a></span> Variable Statement</li>
+            <li><span class="secnum"><a href="#sec-destructuring-binding-patterns">13.3.3</a></span> Destructuring Binding
+                Patterns</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-empty-statement">13.4</a></span> Empty Statement
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-empty-statement-runtime-semantics-evaluation">13.4.1</a></span> Runtime
+                Semantics: Evaluation</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-expression-statement">13.5</a></span> Expression Statement
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-expression-statement-runtime-semantics-evaluation">13.5.1</a></span> Runtime
+                Semantics: Evaluation</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-if-statement">13.6</a></span> The <code>if</code> Statement
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-if-statement-static-semantics-early-errors">13.6.1</a></span> Static Semantics:
+                Early Errors</li>
+            <li><span class="secnum"><a href="#sec-if-statement-static-semantics-containsduplicatelabels">13.6.2</a></span> Static
+                Semantics: ContainsDuplicateLabels</li>
+            <li><span class="secnum"><a href="#sec-if-statement-static-semantics-containsundefinedbreaktarget">13.6.3</a></span>
+                Static Semantics: ContainsUndefinedBreakTarget</li>
+            <li><span class="secnum"><a
+                href="#sec-if-statement-static-semantics-containsundefinedcontinuetarget">13.6.4</a></span> Static Semantics:
+                ContainsUndefinedContinueTarget</li>
+            <li><span class="secnum"><a href="#sec-if-statement-static-semantics-vardeclarednames">13.6.5</a></span> Static
+                Semantics:  VarDeclaredNames</li>
+            <li><span class="secnum"><a href="#sec-if-statement-static-semantics-varscopeddeclarations">13.6.6</a></span> Static
+                Semantics:  VarScopedDeclarations</li>
+            <li><span class="secnum"><a href="#sec-if-statement-runtime-semantics-evaluation">13.6.7</a></span> Runtime Semantics:
+                Evaluation</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-iteration-statements">13.7</a></span> Iteration Statements
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-iteration-statements-semantics">13.7.1</a></span> Semantics</li>
+            <li><span class="secnum"><a href="#sec-do-while-statement">13.7.2</a></span> The <code>do</code>-<code>while</code>
+                Statement</li>
+            <li><span class="secnum"><a href="#sec-while-statement">13.7.3</a></span> The <code>while</code> Statement</li>
+            <li><span class="secnum"><a href="#sec-for-statement">13.7.4</a></span> The <code>for</code> Statement</li>
+            <li><span class="secnum"><a href="#sec-for-in-and-for-of-statements">13.7.5</a></span> The
+                <code>for</code>-<code>in</code> and <code>for</code>-<code>of</code> Statements</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-continue-statement">13.8</a></span> The <code>continue</code> Statement
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-continue-statement-static-semantics-early-errors">13.8.1</a></span> Static
+                Semantics:  Early Errors</li>
+            <li><span class="secnum"><a
+                href="#sec-continue-statement-static-semantics-containsundefinedcontinuetarget">13.8.2</a></span> Static
+                Semantics: ContainsUndefinedContinueTarget</li>
+            <li><span class="secnum"><a href="#sec-continue-statement-runtime-semantics-evaluation">13.8.3</a></span> Runtime
+                Semantics: Evaluation</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-break-statement">13.9</a></span> The <code>break</code> Statement
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-break-statement-static-semantics-early-errors">13.9.1</a></span> Static
+                Semantics:  Early Errors</li>
+            <li><span class="secnum"><a
+                href="#sec-break-statement-static-semantics-containsundefinedbreaktarget">13.9.2</a></span> Static Semantics:
+                ContainsUndefinedBreakTarget</li>
+            <li><span class="secnum"><a href="#sec-break-statement-runtime-semantics-evaluation">13.9.3</a></span> Runtime
+                Semantics: Evaluation</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-return-statement">13.10</a></span> The <code>return</code> Statement
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-return-statement-runtime-semantics-evaluation">13.10.1</a></span> Runtime
+                Semantics: Evaluation</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-with-statement">13.11</a></span> The <code>with</code> Statement
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-with-statement-static-semantics-early-errors">13.11.1</a></span> Static
+                Semantics:  Early Errors</li>
+            <li><span class="secnum"><a href="#sec-with-statement-static-semantics-containsduplicatelabels">13.11.2</a></span>
+                Static Semantics: ContainsDuplicateLabels</li>
+            <li><span class="secnum"><a
+                href="#sec-with-statement-static-semantics-containsundefinedbreaktarget">13.11.3</a></span> Static Semantics:
+                ContainsUndefinedBreakTarget</li>
+            <li><span class="secnum"><a
+                href="#sec-with-statement-static-semantics-containsundefinedcontinuetarget">13.11.4</a></span> Static Semantics:
+                ContainsUndefinedContinueTarget</li>
+            <li><span class="secnum"><a href="#sec-with-statement-static-semantics-vardeclarednames">13.11.5</a></span> Static
+                Semantics:  VarDeclaredNames</li>
+            <li><span class="secnum"><a href="#sec-with-statement-static-semantics-varscopeddeclarations">13.11.6</a></span>
+                Static Semantics:  VarScopedDeclarations</li>
+            <li><span class="secnum"><a href="#sec-with-statement-runtime-semantics-evaluation">13.11.7</a></span> Runtime
+                Semantics: Evaluation</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-switch-statement">13.12</a></span> The <code>switch</code> Statement
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-switch-statement-static-semantics-early-errors">13.12.1</a></span> Static
+                Semantics:  Early Errors</li>
+            <li><span class="secnum"><a href="#sec-switch-statement-static-semantics-containsduplicatelabels">13.12.2</a></span>
+                Static Semantics: ContainsDuplicateLabels</li>
+            <li><span class="secnum"><a
+                href="#sec-switch-statement-static-semantics-containsundefinedbreaktarget">13.12.3</a></span> Static Semantics:
+                ContainsUndefinedBreakTarget</li>
+            <li><span class="secnum"><a
+                href="#sec-switch-statement-static-semantics-containsundefinedcontinuetarget">13.12.4</a></span> Static Semantics:
+                ContainsUndefinedContinueTarget</li>
+            <li><span class="secnum"><a href="#sec-switch-statement-static-semantics-lexicallydeclarednames">13.12.5</a></span>
+                Static Semantics:  LexicallyDeclaredNames</li>
+            <li><span class="secnum"><a
+                href="#sec-switch-statement-static-semantics-lexicallyscopeddeclarations">13.12.6</a></span> Static Semantics:
+                LexicallyScopedDeclarations</li>
+            <li><span class="secnum"><a href="#sec-switch-statement-static-semantics-vardeclarednames">13.12.7</a></span> Static
+                Semantics:  VarDeclaredNames</li>
+            <li><span class="secnum"><a href="#sec-switch-statement-static-semantics-varscopeddeclarations">13.12.8</a></span>
+                Static Semantics:  VarScopedDeclarations</li>
+            <li><span class="secnum"><a href="#sec-runtime-semantics-caseblockevaluation">13.12.9</a></span> Runtime Semantics:
+                CaseBlockEvaluation</li>
+            <li><span class="secnum"><a href="#sec-runtime-semantics-caseselectorevaluation">13.12.10</a></span> Runtime
+                Semantics: CaseSelectorEvaluation</li>
+            <li><span class="secnum"><a href="#sec-switch-statement-runtime-semantics-evaluation">13.12.11</a></span> Runtime
+                Semantics: Evaluation</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-labelled-statements">13.13</a></span> Labelled Statements
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-labelled-statements-static-semantics-early-errors">13.13.1</a></span> Static
+                Semantics:  Early Errors</li>
+            <li><span class="secnum"><a
+                href="#sec-labelled-statements-static-semantics-containsduplicatelabels">13.13.2</a></span> Static Semantics:
+                ContainsDuplicateLabels</li>
+            <li><span class="secnum"><a
+                href="#sec-labelled-statements-static-semantics-containsundefinedbreaktarget">13.13.3</a></span> Static Semantics:
+                ContainsUndefinedBreakTarget</li>
+            <li><span class="secnum"><a
+                href="#sec-labelled-statements-static-semantics-containsundefinedcontinuetarget">13.13.4</a></span> Static
+                Semantics: ContainsUndefinedContinueTarget</li>
+            <li><span class="secnum"><a href="#sec-islabelledfunction">13.13.5</a></span> Static Semantics:  IsLabelledFunction (
+                stmt )</li>
+            <li><span class="secnum"><a href="#sec-labelled-statements-static-semantics-lexicallydeclarednames">13.13.6</a></span>
+                Static Semantics:  LexicallyDeclaredNames</li>
+            <li><span class="secnum"><a
+                href="#sec-labelled-statements-static-semantics-lexicallyscopeddeclarations">13.13.7</a></span> Static Semantics:
+                LexicallyScopedDeclarations</li>
+            <li><span class="secnum"><a
+                href="#sec-labelled-statements-static-semantics-toplevellexicallydeclarednames">13.13.8</a></span> Static
+                Semantics:  TopLevelLexicallyDeclaredNames</li>
+            <li><span class="secnum"><a
+                href="#sec-labelled-statements-static-semantics-toplevellexicallyscopeddeclarations">13.13.9</a></span> Static
+                Semantics:  TopLevelLexicallyScopedDeclarations</li>
+            <li><span class="secnum"><a
+                href="#sec-labelled-statements-static-semantics-toplevelvardeclarednames">13.13.10</a></span> Static Semantics:
+                TopLevelVarDeclaredNames</li>
+            <li><span class="secnum"><a
+                href="#sec-labelled-statements-static-semantics-toplevelvarscopeddeclarations">13.13.11</a></span> Static
+                Semantics:  TopLevelVarScopedDeclarations</li>
+            <li><span class="secnum"><a href="#sec-labelled-statements-static-semantics-vardeclarednames">13.13.12</a></span>
+                Static Semantics:  VarDeclaredNames</li>
+            <li><span class="secnum"><a href="#sec-labelled-statements-static-semantics-varscopeddeclarations">13.13.13</a></span>
+                Static Semantics:  VarScopedDeclarations</li>
+            <li><span class="secnum"><a href="#sec-labelled-statements-runtime-semantics-labelledevaluation">13.13.14</a></span>
+                Runtime Semantics: LabelledEvaluation</li>
+            <li><span class="secnum"><a href="#sec-labelled-statements-runtime-semantics-evaluation">13.13.15</a></span> Runtime
+                Semantics: Evaluation</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-throw-statement">13.14</a></span> The <code>throw</code> Statement
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-throw-statement-runtime-semantics-evaluation">13.14.1</a></span> Runtime
+                Semantics: Evaluation</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-try-statement">13.15</a></span> The <code>try</code> Statement
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-try-statement-static-semantics-early-errors">13.15.1</a></span> Static
+                Semantics:  Early Errors</li>
+            <li><span class="secnum"><a href="#sec-try-statement-static-semantics-containsduplicatelabels">13.15.2</a></span>
+                Static Semantics: ContainsDuplicateLabels</li>
+            <li><span class="secnum"><a href="#sec-try-statement-static-semantics-containsundefinedbreaktarget">13.15.3</a></span>
+                Static Semantics: ContainsUndefinedBreakTarget</li>
+            <li><span class="secnum"><a
+                href="#sec-try-statement-static-semantics-containsundefinedcontinuetarget">13.15.4</a></span> Static Semantics:
+                ContainsUndefinedContinueTarget</li>
+            <li><span class="secnum"><a href="#sec-try-statement-static-semantics-vardeclarednames">13.15.5</a></span> Static
+                Semantics:  VarDeclaredNames</li>
+            <li><span class="secnum"><a href="#sec-try-statement-static-semantics-varscopeddeclarations">13.15.6</a></span> Static
+                Semantics:  VarScopedDeclarations</li>
+            <li><span class="secnum"><a href="#sec-runtime-semantics-catchclauseevaluation">13.15.7</a></span> Runtime Semantics:
+                CatchClauseEvaluation</li>
+            <li><span class="secnum"><a href="#sec-try-statement-runtime-semantics-evaluation">13.15.8</a></span> Runtime
+                Semantics: Evaluation</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-debugger-statement">13.16</a></span> The <code>debugger</code> statement
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-debugger-statement-runtime-semantics-evaluation">13.16.1</a></span> Runtime
+                Semantics: Evaluation</li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><span class="secnum"><a href="#sec-ecmascript-language-functions-and-classes">14</a></span> ECMAScript Language: Functions
+        and Classes
+      <ol class="toc">
+        <li><span class="secnum"><a href="#sec-function-definitions">14.1</a></span> Function Definitions
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-directive-prologues-and-the-use-strict-directive">14.1.1</a></span> Directive
+                Prologues and the Use Strict Directive</li>
+            <li><span class="secnum"><a href="#sec-function-definitions-static-semantics-early-errors">14.1.2</a></span> Static
+                Semantics:  Early Errors</li>
+            <li><span class="secnum"><a href="#sec-function-definitions-static-semantics-boundnames">14.1.3</a></span> Static
+                Semantics:  BoundNames</li>
+            <li><span class="secnum"><a href="#sec-function-definitions-static-semantics-contains">14.1.4</a></span> Static
+                Semantics:  Contains</li>
+            <li><span class="secnum"><a href="#sec-function-definitions-static-semantics-containsexpression">14.1.5</a></span>
+                Static Semantics:  ContainsExpression</li>
+            <li><span class="secnum"><a href="#sec-function-definitions-static-semantics-expectedargumentcount">14.1.6</a></span>
+                Static Semantics:  ExpectedArgumentCount</li>
+            <li><span class="secnum"><a href="#sec-function-definitions-static-semantics-hasinitializer">14.1.7</a></span> Static
+                Semantics:  HasInitializer</li>
+            <li><span class="secnum"><a href="#sec-function-definitions-static-semantics-hasname">14.1.8</a></span> Static
+                Semantics:  HasName</li>
+            <li><span class="secnum"><a href="#sec-isanonymousfunctiondefinition">14.1.9</a></span> Static Semantics:
+                IsAnonymousFunctionDefinition ( production )</li>
+            <li><span class="secnum"><a href="#sec-function-definitions-static-semantics-isconstantdeclaration">14.1.10</a></span>
+                Static Semantics:  IsConstantDeclaration</li>
+            <li><span class="secnum"><a href="#sec-function-definitions-static-semantics-isfunctiondefinition">14.1.11</a></span>
+                Static Semantics:  IsFunctionDefinition</li>
+            <li><span class="secnum"><a href="#sec-function-definitions-static-semantics-issimpleparameterlist">14.1.12</a></span>
+                Static Semantics:  IsSimpleParameterList</li>
+            <li><span class="secnum"><a
+                href="#sec-function-definitions-static-semantics-lexicallydeclarednames">14.1.13</a></span> Static Semantics:
+                LexicallyDeclaredNames</li>
+            <li><span class="secnum"><a
+                href="#sec-function-definitions-static-semantics-lexicallyscopeddeclarations">14.1.14</a></span> Static Semantics:
+                LexicallyScopedDeclarations</li>
+            <li><span class="secnum"><a href="#sec-function-definitions-static-semantics-vardeclarednames">14.1.15</a></span>
+                Static Semantics:  VarDeclaredNames</li>
+            <li><span class="secnum"><a href="#sec-function-definitions-static-semantics-varscopeddeclarations">14.1.16</a></span>
+                Static Semantics:  VarScopedDeclarations</li>
+            <li><span class="secnum"><a href="#sec-function-definitions-runtime-semantics-evaluatebody">14.1.17</a></span> Runtime
+                Semantics: EvaluateBody</li>
+            <li><span class="secnum"><a
+                href="#sec-function-definitions-runtime-semantics-iteratorbindinginitialization">14.1.18</a></span> Runtime
+                Semantics: IteratorBindingInitialization</li>
+            <li><span class="secnum"><a
+                href="#sec-function-definitions-runtime-semantics-instantiatefunctionobject">14.1.19</a></span> Runtime Semantics:
+                InstantiateFunctionObject</li>
+            <li><span class="secnum"><a href="#sec-function-definitions-runtime-semantics-evaluation">14.1.20</a></span> Runtime
+                Semantics: Evaluation</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-arrow-function-definitions">14.2</a></span> Arrow Function Definitions
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-arrow-function-definitions-static-semantics-early-errors">14.2.1</a></span>
+                Static Semantics:  Early Errors</li>
+            <li><span class="secnum"><a href="#sec-arrow-function-definitions-static-semantics-boundnames">14.2.2</a></span>
+                Static Semantics:  BoundNames</li>
+            <li><span class="secnum"><a href="#sec-arrow-function-definitions-static-semantics-contains">14.2.3</a></span> Static
+                Semantics:  Contains</li>
+            <li><span class="secnum"><a
+                href="#sec-arrow-function-definitions-static-semantics-containsexpression">14.2.4</a></span> Static Semantics:
+                ContainsExpression</li>
+            <li><span class="secnum"><a
+                href="#sec-arrow-function-definitions-static-semantics-expectedargumentcount">14.2.5</a></span> Static Semantics:
+                ExpectedArgumentCount</li>
+            <li><span class="secnum"><a href="#sec-arrow-function-definitions-static-semantics-hasinitializer">14.2.6</a></span>
+                Static Semantics:  HasInitializer</li>
+            <li><span class="secnum"><a href="#sec-arrow-function-definitions-static-semantics-hasname">14.2.7</a></span> Static
+                Semantics:  HasName</li>
+            <li><span class="secnum"><a
+                href="#sec-arrow-function-definitions-static-semantics-issimpleparameterlist">14.2.8</a></span> Static Semantics:
+                IsSimpleParameterList</li>
+            <li><span class="secnum"><a href="#sec-static-semantics-coveredformalslist">14.2.9</a></span> Static Semantics:
+                CoveredFormalsList</li>
+            <li><span class="secnum"><a
+                href="#sec-arrow-function-definitions-static-semantics-lexicallydeclarednames">14.2.10</a></span> Static
+                Semantics:  LexicallyDeclaredNames</li>
+            <li><span class="secnum"><a
+                href="#sec-arrow-function-definitions-static-semantics-lexicallyscopeddeclarations">14.2.11</a></span> Static
+                Semantics:  LexicallyScopedDeclarations</li>
+            <li><span class="secnum"><a
+                href="#sec-arrow-function-definitions-static-semantics-vardeclarednames">14.2.12</a></span> Static Semantics:
+                VarDeclaredNames</li>
+            <li><span class="secnum"><a
+                href="#sec-arrow-function-definitions-static-semantics-varscopeddeclarations">14.2.13</a></span> Static Semantics:
+                VarScopedDeclarations</li>
+            <li><span class="secnum"><a
+                href="#sec-arrow-function-definitions-runtime-semantics-iteratorbindinginitialization">14.2.14</a></span> Runtime
+                Semantics: IteratorBindingInitialization</li>
+            <li><span class="secnum"><a href="#sec-arrow-function-definitions-runtime-semantics-evaluatebody">14.2.15</a></span>
+                Runtime Semantics: EvaluateBody</li>
+            <li><span class="secnum"><a href="#sec-arrow-function-definitions-runtime-semantics-evaluation">14.2.16</a></span>
+                Runtime Semantics: Evaluation</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-method-definitions">14.3</a></span> Method Definitions
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-method-definitions-static-semantics-early-errors">14.3.1</a></span> Static
+                Semantics:  Early Errors</li>
+            <li><span class="secnum"><a href="#sec-method-definitions-static-semantics-computedpropertycontains">14.3.2</a></span>
+                Static Semantics:  ComputedPropertyContains</li>
+            <li><span class="secnum"><a href="#sec-method-definitions-static-semantics-expectedargumentcount">14.3.3</a></span>
+                Static Semantics:  ExpectedArgumentCount</li>
+            <li><span class="secnum"><a href="#sec-method-definitions-static-semantics-hascomputedpropertykey">14.3.4</a></span>
+                Static Semantics:  HasComputedPropertyKey</li>
+            <li><span class="secnum"><a href="#sec-method-definitions-static-semantics-hasdirectsuper">14.3.5</a></span> Static
+                Semantics:  HasDirectSuper</li>
+            <li><span class="secnum"><a href="#sec-method-definitions-static-semantics-propname">14.3.6</a></span> Static
+                Semantics:  PropName</li>
+            <li><span class="secnum"><a href="#sec-static-semantics-specialmethod">14.3.7</a></span> Static Semantics:
+                SpecialMethod</li>
+            <li><span class="secnum"><a href="#sec-runtime-semantics-definemethod">14.3.8</a></span> Runtime Semantics:
+                DefineMethod</li>
+            <li><span class="secnum"><a
+                href="#sec-method-definitions-runtime-semantics-propertydefinitionevaluation">14.3.9</a></span> Runtime Semantics:
+                PropertyDefinitionEvaluation</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-generator-function-definitions">14.4</a></span> Generator Function Definitions
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-generator-function-definitions-static-semantics-early-errors">14.4.1</a></span>
+                Static Semantics:  Early Errors</li>
+            <li><span class="secnum"><a href="#sec-generator-function-definitions-static-semantics-boundnames">14.4.2</a></span>
+                Static Semantics:  BoundNames</li>
+            <li><span class="secnum"><a
+                href="#sec-generator-function-definitions-static-semantics-computedpropertycontains">14.4.3</a></span> Static
+                Semantics:  ComputedPropertyContains</li>
+            <li><span class="secnum"><a href="#sec-generator-function-definitions-static-semantics-contains">14.4.4</a></span>
+                Static Semantics:  Contains</li>
+            <li><span class="secnum"><a
+                href="#sec-generator-function-definitions-static-semantics-hascomputedpropertykey">14.4.5</a></span> Static
+                Semantics:  HasComputedPropertyKey</li>
+            <li><span class="secnum"><a
+                href="#sec-generator-function-definitions-static-semantics-hasdirectsuper">14.4.6</a></span> Static Semantics:
+                HasDirectSuper</li>
+            <li><span class="secnum"><a href="#sec-generator-function-definitions-static-semantics-hasname">14.4.7</a></span>
+                Static Semantics:  HasName</li>
+            <li><span class="secnum"><a
+                href="#sec-generator-function-definitions-static-semantics-isconstantdeclaration">14.4.8</a></span> Static
+                Semantics:  IsConstantDeclaration</li>
+            <li><span class="secnum"><a
+                href="#sec-generator-function-definitions-static-semantics-isfunctiondefinition">14.4.9</a></span> Static
+                Semantics:  IsFunctionDefinition</li>
+            <li><span class="secnum"><a href="#sec-generator-function-definitions-static-semantics-propname">14.4.10</a></span>
+                Static Semantics:  PropName</li>
+            <li><span class="secnum"><a
+                href="#sec-generator-function-definitions-runtime-semantics-evaluatebody">14.4.11</a></span> Runtime Semantics:
+                EvaluateBody</li>
+            <li><span class="secnum"><a
+                href="#sec-generator-function-definitions-runtime-semantics-instantiatefunctionobject">14.4.12</a></span> Runtime
+                Semantics: InstantiateFunctionObject</li>
+            <li><span class="secnum"><a
+                href="#sec-generator-function-definitions-runtime-semantics-propertydefinitionevaluation">14.4.13</a></span>
+                Runtime Semantics: PropertyDefinitionEvaluation</li>
+            <li><span class="secnum"><a href="#sec-generator-function-definitions-runtime-semantics-evaluation">14.4.14</a></span>
+                Runtime Semantics: Evaluation</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-class-definitions">14.5</a></span> Class Definitions
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-class-definitions-static-semantics-early-errors">14.5.1</a></span> Static
+                Semantics:  Early Errors</li>
+            <li><span class="secnum"><a href="#sec-class-definitions-static-semantics-boundnames">14.5.2</a></span> Static
+                Semantics:  BoundNames</li>
+            <li><span class="secnum"><a href="#sec-static-semantics-constructormethod">14.5.3</a></span> Static Semantics:
+                ConstructorMethod</li>
+            <li><span class="secnum"><a href="#sec-class-definitions-static-semantics-contains">14.5.4</a></span> Static
+                Semantics:  Contains</li>
+            <li><span class="secnum"><a href="#sec-class-definitions-static-semantics-computedpropertycontains">14.5.5</a></span>
+                Static Semantics:  ComputedPropertyContains</li>
+            <li><span class="secnum"><a href="#sec-class-definitions-static-semantics-hasname">14.5.6</a></span> Static Semantics:
+                HasName</li>
+            <li><span class="secnum"><a href="#sec-class-definitions-static-semantics-isconstantdeclaration">14.5.7</a></span>
+                Static Semantics:  IsConstantDeclaration</li>
+            <li><span class="secnum"><a href="#sec-class-definitions-static-semantics-isfunctiondefinition">14.5.8</a></span>
+                Static Semantics:  IsFunctionDefinition</li>
+            <li><span class="secnum"><a href="#sec-static-semantics-isstatic">14.5.9</a></span> Static Semantics:  IsStatic</li>
+            <li><span class="secnum"><a href="#sec-static-semantics-nonconstructormethoddefinitions">14.5.10</a></span> Static
+                Semantics:  NonConstructorMethodDefinitions</li>
+            <li><span class="secnum"><a href="#sec-static-semantics-prototypepropertynamelist">14.5.11</a></span> Static
+                Semantics:  PrototypePropertyNameList</li>
+            <li><span class="secnum"><a href="#sec-class-definitions-static-semantics-propname">14.5.12</a></span> Static
+                Semantics:  PropName</li>
+            <li><span class="secnum"><a href="#sec-static-semantics-staticpropertynamelist">14.5.13</a></span> Static Semantics:
+                StaticPropertyNameList</li>
+            <li><span class="secnum"><a href="#sec-runtime-semantics-classdefinitionevaluation">14.5.14</a></span> Runtime
+                Semantics: ClassDefinitionEvaluation</li>
+            <li><span class="secnum"><a href="#sec-runtime-semantics-bindingclassdeclarationevaluation">14.5.15</a></span> Runtime
+                Semantics: BindingClassDeclarationEvaluation</li>
+            <li><span class="secnum"><a href="#sec-class-definitions-runtime-semantics-evaluation">14.5.16</a></span> Runtime
+                Semantics: Evaluation</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-tail-position-calls">14.6</a></span> Tail Position Calls
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-isintailposition">14.6.1</a></span> Static Semantics:
+                IsInTailPosition(nonterminal)</li>
+            <li><span class="secnum"><a href="#sec-static-semantics-hasproductionintailposition">14.6.2</a></span> Static
+                Semantics: HasProductionInTailPosition</li>
+            <li><span class="secnum"><a href="#sec-preparefortailcall">14.6.3</a></span> Runtime Semantics: PrepareForTailCall (
+                )</li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><span class="secnum"><a href="#sec-ecmascript-language-scripts-and-modules">15</a></span> ECMAScript Language: Scripts and
+        Modules
+      <ol class="toc">
+        <li><span class="secnum"><a href="#sec-scripts">15.1</a></span> Scripts
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-scripts-static-semantics-early-errors">15.1.1</a></span> Static Semantics:
+                Early Errors</li>
+            <li><span class="secnum"><a href="#sec-static-semantics-isstrict">15.1.2</a></span> Static Semantics:  IsStrict</li>
+            <li><span class="secnum"><a href="#sec-scripts-static-semantics-lexicallydeclarednames">15.1.3</a></span> Static
+                Semantics:  LexicallyDeclaredNames</li>
+            <li><span class="secnum"><a href="#sec-scripts-static-semantics-lexicallyscopeddeclarations">15.1.4</a></span> Static
+                Semantics:  LexicallyScopedDeclarations</li>
+            <li><span class="secnum"><a href="#sec-scripts-static-semantics-vardeclarednames">15.1.5</a></span> Static Semantics:
+                VarDeclaredNames</li>
+            <li><span class="secnum"><a href="#sec-scripts-static-semantics-varscopeddeclarations">15.1.6</a></span> Static
+                Semantics:  VarScopedDeclarations</li>
+            <li><span class="secnum"><a href="#sec-runtime-semantics-scriptevaluation">15.1.7</a></span> Runtime Semantics:
+                ScriptEvaluation</li>
+            <li><span class="secnum"><a href="#sec-globaldeclarationinstantiation">15.1.8</a></span> Runtime Semantics:
+                GlobalDeclarationInstantiation (script, env)</li>
+            <li><span class="secnum"><a href="#sec-scriptevaluationjob">15.1.9</a></span> Runtime Semantics: ScriptEvaluationJob (
+                sourceText )</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-modules">15.2</a></span> Modules
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-module-semantics">15.2.1</a></span> Module Semantics</li>
+            <li><span class="secnum"><a href="#sec-imports">15.2.2</a></span> Imports</li>
+            <li><span class="secnum"><a href="#sec-exports">15.2.3</a></span> Exports</li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><span class="secnum"><a href="#sec-error-handling-and-language-extensions">16</a></span> Error Handling and Language
+        Extensions
+      <ol class="toc">
+        <li><span class="secnum"><a href="#sec-forbidden-extensions">16.1</a></span> Forbidden Extensions</li>
+      </ol>
+    </li>
+    <li><span class="secnum"><a href="#sec-ecmascript-standard-built-in-objects">17</a></span> ECMAScript Standard Built-in
+        Objects</li>
+    <li><span class="secnum"><a href="#sec-global-object">18</a></span> The Global Object
+      <ol class="toc">
+        <li><span class="secnum"><a href="#sec-value-properties-of-the-global-object">18.1</a></span> Value Properties of the
+            Global Object
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-value-properties-of-the-global-object-infinity">18.1.1</a></span> Infinity</li>
+            <li><span class="secnum"><a href="#sec-value-properties-of-the-global-object-nan">18.1.2</a></span> NaN</li>
+            <li><span class="secnum"><a href="#sec-undefined">18.1.3</a></span> undefined</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-function-properties-of-the-global-object">18.2</a></span> Function Properties of
+            the Global Object
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-eval-x">18.2.1</a></span> eval (x)</li>
+            <li><span class="secnum"><a href="#sec-isfinite-number">18.2.2</a></span> isFinite (number)</li>
+            <li><span class="secnum"><a href="#sec-isnan-number">18.2.3</a></span> isNaN (number)</li>
+            <li><span class="secnum"><a href="#sec-parsefloat-string">18.2.4</a></span> parseFloat (string)</li>
+            <li><span class="secnum"><a href="#sec-parseint-string-radix">18.2.5</a></span> parseInt (string , radix)</li>
+            <li><span class="secnum"><a href="#sec-uri-handling-functions">18.2.6</a></span> URI Handling Functions</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-constructor-properties-of-the-global-object">18.3</a></span> Constructor Properties
+            of the Global Object
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-constructor-properties-of-the-global-object-array">18.3.1</a></span> Array ( .
+                . . )</li>
+            <li><span class="secnum"><a href="#sec-constructor-properties-of-the-global-object-arraybuffer">18.3.2</a></span>
+                ArrayBuffer ( . . . )</li>
+            <li><span class="secnum"><a href="#sec-constructor-properties-of-the-global-object-boolean">18.3.3</a></span> Boolean
+                ( . . . )</li>
+            <li><span class="secnum"><a href="#sec-constructor-properties-of-the-global-object-dataview">18.3.4</a></span>
+                DataView ( . . . )</li>
+            <li><span class="secnum"><a href="#sec-constructor-properties-of-the-global-object-date">18.3.5</a></span> Date ( . .
+                . )</li>
+            <li><span class="secnum"><a href="#sec-constructor-properties-of-the-global-object-error">18.3.6</a></span> Error ( .
+                . . )</li>
+            <li><span class="secnum"><a href="#sec-constructor-properties-of-the-global-object-evalerror">18.3.7</a></span>
+                EvalError ( . . . )</li>
+            <li><span class="secnum"><a href="#sec-float32array">18.3.8</a></span> Float32Array ( . . . )</li>
+            <li><span class="secnum"><a href="#sec-float64array">18.3.9</a></span> Float64Array ( . . . )</li>
+            <li><span class="secnum"><a href="#sec-constructor-properties-of-the-global-object-function">18.3.10</a></span>
+                Function ( . . . )</li>
+            <li><span class="secnum"><a href="#sec-int8array">18.3.11</a></span> Int8Array ( . . . )</li>
+            <li><span class="secnum"><a href="#sec-int16array">18.3.12</a></span> Int16Array ( . . . )</li>
+            <li><span class="secnum"><a href="#sec-int32array">18.3.13</a></span> Int32Array ( . . . )</li>
+            <li><span class="secnum"><a href="#sec-map">18.3.14</a></span> Map ( . . . )</li>
+            <li><span class="secnum"><a href="#sec-constructor-properties-of-the-global-object-number">18.3.15</a></span> Number (
+                . . . )</li>
+            <li><span class="secnum"><a href="#sec-constructor-properties-of-the-global-object-object">18.3.16</a></span> Object (
+                . . . )</li>
+            <li><span class="secnum"><a href="#sec-constructor-properties-of-the-global-object-proxy">18.3.17</a></span> Proxy ( .
+                . . )</li>
+            <li><span class="secnum"><a href="#sec-constructor-properties-of-the-global-object-promise">18.3.18</a></span> Promise
+                ( . . . )</li>
+            <li><span class="secnum"><a href="#sec-constructor-properties-of-the-global-object-rangeerror">18.3.19</a></span>
+                RangeError ( . . . )</li>
+            <li><span class="secnum"><a href="#sec-constructor-properties-of-the-global-object-referenceerror">18.3.20</a></span>
+                ReferenceError ( . . . )</li>
+            <li><span class="secnum"><a href="#sec-constructor-properties-of-the-global-object-regexp">18.3.21</a></span> RegExp (
+                . . . )</li>
+            <li><span class="secnum"><a href="#sec-set">18.3.22</a></span> Set ( . . . )</li>
+            <li><span class="secnum"><a href="#sec-constructor-properties-of-the-global-object-string">18.3.23</a></span> String (
+                . . . )</li>
+            <li><span class="secnum"><a href="#sec-constructor-properties-of-the-global-object-symbol">18.3.24</a></span> Symbol (
+                . . . )</li>
+            <li><span class="secnum"><a href="#sec-constructor-properties-of-the-global-object-syntaxerror">18.3.25</a></span>
+                SyntaxError ( . . . )</li>
+            <li><span class="secnum"><a href="#sec-constructor-properties-of-the-global-object-typeerror">18.3.26</a></span>
+                TypeError ( . . . )</li>
+            <li><span class="secnum"><a href="#sec-uint8array">18.3.27</a></span> Uint8Array ( . . . )</li>
+            <li><span class="secnum"><a href="#sec-uint8clampedarray">18.3.28</a></span> Uint8ClampedArray ( . . . )</li>
+            <li><span class="secnum"><a href="#sec-uint16array">18.3.29</a></span> Uint16Array ( . . . )</li>
+            <li><span class="secnum"><a href="#sec-uint32array">18.3.30</a></span> Uint32Array ( . . . )</li>
+            <li><span class="secnum"><a href="#sec-constructor-properties-of-the-global-object-urierror">18.3.31</a></span>
+                URIError ( . . . )</li>
+            <li><span class="secnum"><a href="#sec-constructor-properties-of-the-global-object-weakmap">18.3.32</a></span> WeakMap
+                ( . . . )</li>
+            <li><span class="secnum"><a href="#sec-constructor-properties-of-the-global-object-weakset">18.3.33</a></span> WeakSet
+                ( . . . )</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-other-properties-of-the-global-object">18.4</a></span> Other Properties of the
+            Global Object
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-json">18.4.1</a></span> JSON</li>
+            <li><span class="secnum"><a href="#sec-math">18.4.2</a></span> Math</li>
+            <li><span class="secnum"><a href="#sec-reflect">18.4.3</a></span> Reflect</li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><span class="secnum"><a href="#sec-fundamental-objects">19</a></span> Fundamental Objects
+      <ol class="toc">
+        <li><span class="secnum"><a href="#sec-object-objects">19.1</a></span> Object Objects
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-object-constructor">19.1.1</a></span> The Object Constructor</li>
+            <li><span class="secnum"><a href="#sec-properties-of-the-object-constructor">19.1.2</a></span> Properties of the
+                Object Constructor</li>
+            <li><span class="secnum"><a href="#sec-properties-of-the-object-prototype-object">19.1.3</a></span> Properties of the
+                Object Prototype Object</li>
+            <li><span class="secnum"><a href="#sec-properties-of-object-instances">19.1.4</a></span> Properties of Object
+                Instances</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-function-objects">19.2</a></span> Function Objects
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-function-constructor">19.2.1</a></span> The Function Constructor</li>
+            <li><span class="secnum"><a href="#sec-properties-of-the-function-constructor">19.2.2</a></span> Properties of the
+                Function Constructor</li>
+            <li><span class="secnum"><a href="#sec-properties-of-the-function-prototype-object">19.2.3</a></span> Properties of
+                the Function Prototype Object</li>
+            <li><span class="secnum"><a href="#sec-function-instances">19.2.4</a></span> Function Instances</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-boolean-objects">19.3</a></span> Boolean Objects
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-boolean-constructor">19.3.1</a></span> The Boolean Constructor</li>
+            <li><span class="secnum"><a href="#sec-properties-of-the-boolean-constructor">19.3.2</a></span> Properties of the
+                Boolean Constructor</li>
+            <li><span class="secnum"><a href="#sec-properties-of-the-boolean-prototype-object">19.3.3</a></span> Properties of the
+                Boolean Prototype Object</li>
+            <li><span class="secnum"><a href="#sec-properties-of-boolean-instances">19.3.4</a></span> Properties of Boolean
+                Instances</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-symbol-objects">19.4</a></span> Symbol Objects
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-symbol-constructor">19.4.1</a></span> The Symbol Constructor</li>
+            <li><span class="secnum"><a href="#sec-properties-of-the-symbol-constructor">19.4.2</a></span> Properties of the
+                Symbol Constructor</li>
+            <li><span class="secnum"><a href="#sec-properties-of-the-symbol-prototype-object">19.4.3</a></span> Properties of the
+                Symbol Prototype Object</li>
+            <li><span class="secnum"><a href="#sec-properties-of-symbol-instances">19.4.4</a></span> Properties of Symbol
+                Instances</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-error-objects">19.5</a></span> Error Objects
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-error-constructor">19.5.1</a></span> The Error Constructor</li>
+            <li><span class="secnum"><a href="#sec-properties-of-the-error-constructor">19.5.2</a></span> Properties of the Error
+                Constructor</li>
+            <li><span class="secnum"><a href="#sec-properties-of-the-error-prototype-object">19.5.3</a></span> Properties of the
+                Error Prototype Object</li>
+            <li><span class="secnum"><a href="#sec-properties-of-error-instances">19.5.4</a></span> Properties of Error
+                Instances</li>
+            <li><span class="secnum"><a href="#sec-native-error-types-used-in-this-standard">19.5.5</a></span> Native Error Types
+                Used in This Standard</li>
+            <li><span class="secnum"><a href="#sec-nativeerror-object-structure">19.5.6</a></span> <i>NativeError</i> Object
+                Structure</li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><span class="secnum"><a href="#sec-numbers-and-dates">20</a></span> Numbers and Dates
+      <ol class="toc">
+        <li><span class="secnum"><a href="#sec-number-objects">20.1</a></span> Number Objects
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-number-constructor">20.1.1</a></span> The Number Constructor</li>
+            <li><span class="secnum"><a href="#sec-properties-of-the-number-constructor">20.1.2</a></span> Properties of the
+                Number Constructor</li>
+            <li><span class="secnum"><a href="#sec-properties-of-the-number-prototype-object">20.1.3</a></span> Properties of the
+                Number Prototype Object</li>
+            <li><span class="secnum"><a href="#sec-properties-of-number-instances">20.1.4</a></span> Properties of Number
+                Instances</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-math-object">20.2</a></span> The Math Object
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-value-properties-of-the-math-object">20.2.1</a></span> Value Properties of the
+                Math Object</li>
+            <li><span class="secnum"><a href="#sec-function-properties-of-the-math-object">20.2.2</a></span> Function Properties
+                of the Math Object</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-date-objects">20.3</a></span> Date Objects
+          <ol class="toc">
+            <li><span class="secnum"><a
+                href="#sec-overview-of-date-objects-and-definitions-of-abstract-operations">20.3.1</a></span> Overview of Date
+                Objects and Definitions of Abstract Operations</li>
+            <li><span class="secnum"><a href="#sec-date-constructor">20.3.2</a></span> The Date Constructor</li>
+            <li><span class="secnum"><a href="#sec-properties-of-the-date-constructor">20.3.3</a></span> Properties of the Date
+                Constructor</li>
+            <li><span class="secnum"><a href="#sec-properties-of-the-date-prototype-object">20.3.4</a></span> Properties of the
+                Date Prototype Object</li>
+            <li><span class="secnum"><a href="#sec-properties-of-date-instances">20.3.5</a></span> Properties of Date
+                Instances</li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><span class="secnum"><a href="#sec-text-processing">21</a></span> Text Processing
+      <ol class="toc">
+        <li><span class="secnum"><a href="#sec-string-objects">21.1</a></span> String Objects
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-string-constructor">21.1.1</a></span> The String Constructor</li>
+            <li><span class="secnum"><a href="#sec-properties-of-the-string-constructor">21.1.2</a></span> Properties of the
+                String Constructor</li>
+            <li><span class="secnum"><a href="#sec-properties-of-the-string-prototype-object">21.1.3</a></span> Properties of the
+                String Prototype Object</li>
+            <li><span class="secnum"><a href="#sec-properties-of-string-instances">21.1.4</a></span> Properties of String
+                Instances</li>
+            <li><span class="secnum"><a href="#sec-string-iterator-objects">21.1.5</a></span> String Iterator Objects</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-regexp-regular-expression-objects">21.2</a></span> RegExp (Regular Expression)
+            Objects
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-patterns">21.2.1</a></span> Patterns</li>
+            <li><span class="secnum"><a href="#sec-pattern-semantics">21.2.2</a></span> Pattern Semantics</li>
+            <li><span class="secnum"><a href="#sec-regexp-constructor">21.2.3</a></span> The RegExp Constructor</li>
+            <li><span class="secnum"><a href="#sec-properties-of-the-regexp-constructor">21.2.4</a></span> Properties of the
+                RegExp Constructor</li>
+            <li><span class="secnum"><a href="#sec-properties-of-the-regexp-prototype-object">21.2.5</a></span> Properties of the
+                RegExp Prototype Object</li>
+            <li><span class="secnum"><a href="#sec-properties-of-regexp-instances">21.2.6</a></span> Properties of RegExp
+                Instances</li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><span class="secnum"><a href="#sec-indexed-collections">22</a></span> Indexed Collections
+      <ol class="toc">
+        <li><span class="secnum"><a href="#sec-array-objects">22.1</a></span> Array Objects
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-array-constructor">22.1.1</a></span> The Array Constructor</li>
+            <li><span class="secnum"><a href="#sec-properties-of-the-array-constructor">22.1.2</a></span> Properties of the Array
+                Constructor</li>
+            <li><span class="secnum"><a href="#sec-properties-of-the-array-prototype-object">22.1.3</a></span> Properties of the
+                Array Prototype Object</li>
+            <li><span class="secnum"><a href="#sec-properties-of-array-instances">22.1.4</a></span> Properties of Array
+                Instances</li>
+            <li><span class="secnum"><a href="#sec-array-iterator-objects">22.1.5</a></span> Array Iterator Objects</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-typedarray-objects">22.2</a></span> TypedArray Objects
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-%typedarray%-intrinsic-object">22.2.1</a></span> The %TypedArray% Intrinsic
+                Object</li>
+            <li><span class="secnum"><a href="#sec-properties-of-the-%typedarray%-intrinsic-object">22.2.2</a></span> Properties
+                of the %TypedArray% Intrinsic Object</li>
+            <li><span class="secnum"><a href="#sec-properties-of-the-%typedarrayprototype%-object">22.2.3</a></span> Properties of
+                the %TypedArrayPrototype% Object</li>
+            <li><span class="secnum"><a href="#sec-typedarray-constructors">22.2.4</a></span> The <i>TypedArray</i>
+                Constructors</li>
+            <li><span class="secnum"><a href="#sec-properties-of-the-typedarray-constructors">22.2.5</a></span> Properties of the
+                <i>TypedArray</i> Constructors</li>
+            <li><span class="secnum"><a href="#sec-properties-of-typedarray-prototype-objects">22.2.6</a></span> Properties of
+                <i>TypedArray</i> Prototype Objects</li>
+            <li><span class="secnum"><a href="#sec-properties-of-typedarray-instances">22.2.7</a></span> Properties of
+                <i>TypedArray</i> Instances</li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><span class="secnum"><a href="#sec-keyed-collection">23</a></span> Keyed Collection
+      <ol class="toc">
+        <li><span class="secnum"><a href="#sec-map-objects">23.1</a></span> Map Objects
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-map-constructor">23.1.1</a></span> The Map Constructor</li>
+            <li><span class="secnum"><a href="#sec-properties-of-the-map-constructor">23.1.2</a></span> Properties of the Map
+                Constructor</li>
+            <li><span class="secnum"><a href="#sec-properties-of-the-map-prototype-object">23.1.3</a></span> Properties of the Map
+                Prototype Object</li>
+            <li><span class="secnum"><a href="#sec-properties-of-map-instances">23.1.4</a></span> Properties of Map Instances</li>
+            <li><span class="secnum"><a href="#sec-map-iterator-objects">23.1.5</a></span> Map Iterator Objects</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-set-objects">23.2</a></span> Set Objects
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-set-constructor">23.2.1</a></span> The Set Constructor</li>
+            <li><span class="secnum"><a href="#sec-properties-of-the-set-constructor">23.2.2</a></span> Properties of the Set
+                Constructor</li>
+            <li><span class="secnum"><a href="#sec-properties-of-the-set-prototype-object">23.2.3</a></span> Properties of the Set
+                Prototype Object</li>
+            <li><span class="secnum"><a href="#sec-properties-of-set-instances">23.2.4</a></span> Properties of Set Instances</li>
+            <li><span class="secnum"><a href="#sec-set-iterator-objects">23.2.5</a></span> Set Iterator Objects</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-weakmap-objects">23.3</a></span> WeakMap Objects
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-weakmap-constructor">23.3.1</a></span> The WeakMap Constructor</li>
+            <li><span class="secnum"><a href="#sec-properties-of-the-weakmap-constructor">23.3.2</a></span> Properties of the
+                WeakMap Constructor</li>
+            <li><span class="secnum"><a href="#sec-properties-of-the-weakmap-prototype-object">23.3.3</a></span> Properties of the
+                WeakMap Prototype Object</li>
+            <li><span class="secnum"><a href="#sec-properties-of-weakmap-instances">23.3.4</a></span> Properties of WeakMap
+                Instances</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-weakset-objects">23.4</a></span> WeakSet Objects
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-weakset-constructor">23.4.1</a></span> The WeakSet Constructor</li>
+            <li><span class="secnum"><a href="#sec-properties-of-the-weakset-constructor">23.4.2</a></span> Properties of the
+                WeakSet Constructor</li>
+            <li><span class="secnum"><a href="#sec-properties-of-the-weakset-prototype-object">23.4.3</a></span> Properties of the
+                WeakSet Prototype Object</li>
+            <li><span class="secnum"><a href="#sec-properties-of-weakset-instances">23.4.4</a></span> Properties of WeakSet
+                Instances</li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><span class="secnum"><a href="#sec-structured-data">24</a></span> Structured Data
+      <ol class="toc">
+        <li><span class="secnum"><a href="#sec-arraybuffer-objects">24.1</a></span> ArrayBuffer Objects
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-abstract-operations-for-arraybuffer-objects">24.1.1</a></span> Abstract
+                Operations For ArrayBuffer Objects</li>
+            <li><span class="secnum"><a href="#sec-arraybuffer-constructor">24.1.2</a></span> The ArrayBuffer Constructor</li>
+            <li><span class="secnum"><a href="#sec-properties-of-the-arraybuffer-constructor">24.1.3</a></span> Properties of the
+                ArrayBuffer Constructor</li>
+            <li><span class="secnum"><a href="#sec-properties-of-the-arraybuffer-prototype-object">24.1.4</a></span> Properties of
+                the ArrayBuffer Prototype Object</li>
+            <li><span class="secnum"><a href="#sec-properties-of-the-arraybuffer-instances">24.1.5</a></span> Properties of the
+                ArrayBuffer Instances</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-dataview-objects">24.2</a></span> DataView Objects
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-abstract-operations-for-dataview-objects">24.2.1</a></span> Abstract Operations
+                For DataView Objects</li>
+            <li><span class="secnum"><a href="#sec-dataview-constructor">24.2.2</a></span> The DataView Constructor</li>
+            <li><span class="secnum"><a href="#sec-properties-of-the-dataview-constructor">24.2.3</a></span> Properties of the
+                DataView Constructor</li>
+            <li><span class="secnum"><a href="#sec-properties-of-the-dataview-prototype-object">24.2.4</a></span> Properties of
+                the DataView Prototype Object</li>
+            <li><span class="secnum"><a href="#sec-properties-of-dataview-instances">24.2.5</a></span> Properties of DataView
+                Instances</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-json-object">24.3</a></span> The JSON Object
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-json.parse">24.3.1</a></span> JSON.parse ( text [ , reviver ] )</li>
+            <li><span class="secnum"><a href="#sec-json.stringify">24.3.2</a></span> JSON.stringify ( value [ , replacer [ , space
+                ] ] )</li>
+            <li><span class="secnum"><a href="#sec-json-@@tostringtag">24.3.3</a></span> JSON [ @@toStringTag ]</li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><span class="secnum"><a href="#sec-control-abstraction-objects">25</a></span> Control Abstraction Objects
+      <ol class="toc">
+        <li><span class="secnum"><a href="#sec-iteration">25.1</a></span> Iteration
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-common-iteration-interfaces">25.1.1</a></span> Common Iteration Interfaces</li>
+            <li><span class="secnum"><a href="#sec-%iteratorprototype%-object">25.1.2</a></span> The %IteratorPrototype%
+                Object</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-generatorfunction-objects">25.2</a></span> GeneratorFunction Objects
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-generatorfunction-constructor">25.2.1</a></span> The GeneratorFunction
+                Constructor</li>
+            <li><span class="secnum"><a href="#sec-properties-of-the-generatorfunction-constructor">25.2.2</a></span> Properties
+                of the GeneratorFunction Constructor</li>
+            <li><span class="secnum"><a href="#sec-properties-of-the-generatorfunction-prototype-object">25.2.3</a></span>
+                Properties of the GeneratorFunction Prototype Object</li>
+            <li><span class="secnum"><a href="#sec-generatorfunction-instances">25.2.4</a></span> GeneratorFunction Instances</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-generator-objects">25.3</a></span> Generator Objects
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-properties-of-generator-prototype">25.3.1</a></span> Properties of Generator
+                Prototype</li>
+            <li><span class="secnum"><a href="#sec-properties-of-generator-instances">25.3.2</a></span> Properties of Generator
+                Instances</li>
+            <li><span class="secnum"><a href="#sec-generator-abstract-operations">25.3.3</a></span> Generator Abstract
+                Operations</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-promise-objects">25.4</a></span> Promise Objects
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-promise-abstract-operations">25.4.1</a></span> Promise Abstract Operations</li>
+            <li><span class="secnum"><a href="#sec-promise-jobs">25.4.2</a></span> Promise Jobs</li>
+            <li><span class="secnum"><a href="#sec-promise-constructor">25.4.3</a></span> The Promise Constructor</li>
+            <li><span class="secnum"><a href="#sec-properties-of-the-promise-constructor">25.4.4</a></span> Properties of the
+                Promise Constructor</li>
+            <li><span class="secnum"><a href="#sec-properties-of-the-promise-prototype-object">25.4.5</a></span> Properties of the
+                Promise Prototype Object</li>
+            <li><span class="secnum"><a href="#sec-properties-of-promise-instances">25.4.6</a></span> Properties of Promise
+                Instances</li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><span class="secnum"><a href="#sec-reflection">26</a></span> Reflection
+      <ol class="toc">
+        <li><span class="secnum"><a href="#sec-reflect-object">26.1</a></span> The Reflect Object
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-reflect.apply">26.1.1</a></span> Reflect.apply ( target, thisArgument,
+                argumentsList )</li>
+            <li><span class="secnum"><a href="#sec-reflect.construct">26.1.2</a></span> Reflect.construct ( target, argumentsList
+                [, newTarget] )</li>
+            <li><span class="secnum"><a href="#sec-reflect.defineproperty">26.1.3</a></span> Reflect.defineProperty ( target,
+                propertyKey, attributes )</li>
+            <li><span class="secnum"><a href="#sec-reflect.deleteproperty">26.1.4</a></span> Reflect.deleteProperty ( target,
+                propertyKey )</li>
+            <li><span class="secnum"><a href="#sec-reflect.enumerate">26.1.5</a></span> Reflect.enumerate ( target )</li>
+            <li><span class="secnum"><a href="#sec-reflect.get">26.1.6</a></span> Reflect.get ( target, propertyKey [ , receiver
+                ])</li>
+            <li><span class="secnum"><a href="#sec-reflect.getownpropertydescriptor">26.1.7</a></span>
+                Reflect.getOwnPropertyDescriptor ( target, propertyKey )</li>
+            <li><span class="secnum"><a href="#sec-reflect.getprototypeof">26.1.8</a></span> Reflect.getPrototypeOf ( target
+                )</li>
+            <li><span class="secnum"><a href="#sec-reflect.has">26.1.9</a></span> Reflect.has ( target, propertyKey )</li>
+            <li><span class="secnum"><a href="#sec-reflect.isextensible">26.1.10</a></span> Reflect.isExtensible (target)</li>
+            <li><span class="secnum"><a href="#sec-reflect.ownkeys">26.1.11</a></span> Reflect.ownKeys ( target )</li>
+            <li><span class="secnum"><a href="#sec-reflect.preventextensions">26.1.12</a></span> Reflect.preventExtensions (
+                target )</li>
+            <li><span class="secnum"><a href="#sec-reflect.set">26.1.13</a></span> Reflect.set ( target, propertyKey, V [ ,
+                receiver ] )</li>
+            <li><span class="secnum"><a href="#sec-reflect.setprototypeof">26.1.14</a></span> Reflect.setPrototypeOf ( target,
+                proto )</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-proxy-objects">26.2</a></span> Proxy Objects
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-proxy-constructor">26.2.1</a></span> The Proxy Constructor</li>
+            <li><span class="secnum"><a href="#sec-properties-of-the-proxy-constructor">26.2.2</a></span> Properties of the Proxy
+                Constructor</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-module-namespace-objects">26.3</a></span> Module Namespace Objects
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-@@tostringtag">26.3.1</a></span> @@toStringTag</li>
+            <li><span class="secnum"><a href="#sec-@@iterator">26.3.2</a></span> [ @@iterator ] (   )</li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><span class="secnum"><a href="#sec-grammar-summary">Annex&nbsp;A</a></span> <span
+        class="section-status">(informative)</span> Grammar Summary
+      <ol class="toc">
+        <li><span class="secnum"><a href="#sec-lexical-grammar">A.1</a></span> Lexical Grammar</li>
+        <li><span class="secnum"><a href="#sec-expressions">A.2</a></span> Expressions</li>
+        <li><span class="secnum"><a href="#sec-statements">A.3</a></span> Statements</li>
+        <li><span class="secnum"><a href="#sec-functions-and-classes">A.4</a></span> Functions and Classes</li>
+        <li><span class="secnum"><a href="#sec-scripts-and-modules">A.5</a></span> Scripts and Modules</li>
+        <li><span class="secnum"><a href="#sec-number-conversions">A.6</a></span> Number Conversions</li>
+        <li><span class="secnum"><a href="#sec-universal-resource-identifier-character-classes">A.7</a></span> Universal Resource
+            Identifier Character Classes</li>
+        <li><span class="secnum"><a href="#sec-regular-expressions">A.8</a></span> Regular Expressions</li>
+      </ol>
+    </li>
+    <li><span class="secnum"><a href="#sec-additional-ecmascript-features-for-web-browsers">Annex&nbsp;B</a></span> <span
+        class="section-status">(normative)</span> Additional ECMAScript Features for Web Browsers
+      <ol class="toc">
+        <li><span class="secnum"><a href="#sec-additional-syntax">B.1</a></span> Additional Syntax
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-additional-syntax-numeric-literals">B.1.1</a></span> Numeric Literals</li>
+            <li><span class="secnum"><a href="#sec-additional-syntax-string-literals">B.1.2</a></span> String Literals</li>
+            <li><span class="secnum"><a href="#sec-html-like-comments">B.1.3</a></span> HTML-like Comments</li>
+            <li><span class="secnum"><a href="#sec-regular-expressions-patterns">B.1.4</a></span> Regular Expressions
+                Patterns</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-additional-built-in-properties">B.2</a></span> Additional Built-in Properties
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-additional-properties-of-the-global-object">B.2.1</a></span> Additional
+                Properties of the Global Object</li>
+            <li><span class="secnum"><a href="#sec-additional-properties-of-the-object.prototype-object">B.2.2</a></span>
+                Additional Properties of the Object.prototype Object</li>
+            <li><span class="secnum"><a href="#sec-additional-properties-of-the-string.prototype-object">B.2.3</a></span>
+                Additional Properties of the String.prototype Object</li>
+            <li><span class="secnum"><a href="#sec-additional-properties-of-the-date.prototype-object">B.2.4</a></span> Additional
+                Properties of the Date.prototype Object</li>
+            <li><span class="secnum"><a href="#sec-additional-properties-of-the-regexp.prototype-object">B.2.5</a></span>
+                Additional Properties of the RegExp.prototype Object</li>
+          </ol>
+        </li>
+        <li><span class="secnum"><a href="#sec-other-additional-features">B.3</a></span> Other Additional Features
+          <ol class="toc">
+            <li><span class="secnum"><a href="#sec-__proto__-property-names-in-object-initializers">B.3.1</a></span> __proto__
+                Property Names in Object Initializers</li>
+            <li><span class="secnum"><a href="#sec-labelled-function-declarations">B.3.2</a></span> Labelled Function
+                Declarations</li>
+            <li><span class="secnum"><a
+                href="#sec-block-level-function-declarations-web-legacy-compatibility-semantics">B.3.3</a></span> Block-Level
+                Function Declarations Web Legacy Compatibility Semantics</li>
+            <li><span class="secnum"><a href="#sec-functiondeclarations-in-ifstatement-statement-clauses">B.3.4</a></span>
+                FunctionDeclarations in IfStatement Statement Clauses</li>
+            <li><span class="secnum"><a href="#sec-variablestatements-in-catch-blocks">B.3.5</a></span> VariableStatements in
+                Catch blocks</li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><span class="secnum"><a href="#sec-strict-mode-of-ecmascript">Annex&nbsp;C</a></span> <span
+        class="section-status">(informative)</span> The Strict Mode of ECMAScript</li>
+    <li><span class="secnum"><a
+        href="#sec-corrections-and-clarifications-in-ecmascript-2015-with-possible-compatibility-impact">Annex&nbsp;D</a></span>
+        <span class="section-status">(informative)</span> Corrections and Clarifications in ECMAScript 2015 with Possible
+        Compatibility Impact</li>
+    <li><span class="secnum"><a
+        href="#sec-additions-and-changes-that-introduce-incompatibilities-with-prior-editions">Annex&nbsp;E</a></span> <span
+        class="section-status">(informative)</span> Additions and Changes That Introduce Incompatibilities with Prior
+        Editions</li>
+    <li>Bibliography</li>
+  </ol>
+</section>
+</body>
+</html>
